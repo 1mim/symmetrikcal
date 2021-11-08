@@ -1,7 +1,7 @@
 {
   "name": "symmetrikcal",
   "version": "1.0.0",
-  "description": "kcalories calculator mobile app",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
