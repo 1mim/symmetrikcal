@@ -17,7 +17,13 @@ const Search = () => {
     const handleSearch = (e) => {
         e.preventDefault()
         dispatch(fetchFoodData(input))
+        // setSearchResults(results)
     }
+
+    // const [searchResults, setSearchResults] = useState([]);
+    // const [selectedFood, setSelectedFood] = useState({});
+
+
 
     return (
         <div>
@@ -29,7 +35,7 @@ const Search = () => {
                 error ? <p>{error}</p> : 
                     <div>
                         {results.hints.map((food) => (
-                            <ResultsCard key={food.food.foodId} food={food}/>
+                           <ResultsCard key={food.food.foodId} food={food}/>
                         ))}
                     </div>
                 

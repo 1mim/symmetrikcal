@@ -1,5 +1,5 @@
 import axios from "axios"
-import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS } from "../constants/foodLogConstants"
+import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, SELECT_FOOD_ITEM } from "../constants/foodLogConstants"
 
 export const fetchFoodData = (input) => async (dispatch) => {
     dispatch({
@@ -10,7 +10,7 @@ export const fetchFoodData = (input) => async (dispatch) => {
         dispatch({
             type: FETCH_FOOD_EDAM_SUCCESS,
             payload: data
-        })
+        });
     } catch (error) {
         dispatch({
             type: FETCH_FOOD_EDAM_FAIL,
@@ -19,3 +19,18 @@ export const fetchFoodData = (input) => async (dispatch) => {
     }
 }
 
+export const setFoodDataToLog = (food) => async (dispatch) => {
+    const data = food;
+    dispatch({
+        type: SELECT_FOOD_ITEM,
+        payload: {
+            name: data.food.label,
+            calories: data.food.nutrients.ENERC_KCAL,
+            carbs: data.food.nutrients.CHOCDF,
+            protein: data.food.nutrients.PROCNT,
+            fats: data.food.nutrients.FAT,
+            servingSize: 100,
+            mealType: 'snack'
+        }
+    })
+}
