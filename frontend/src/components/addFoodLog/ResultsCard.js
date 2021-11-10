@@ -16,7 +16,7 @@ const ResultsCard = ({ food }) => {
         <div className="result-card">
             <div className="result-content">
             <div>{food.food.label}</div>
-                <div className="result-content-kcal">{food.food.nutrients.ENERC_KCAL.toFixed(0)}kcal
+                <div className="result-content-kcal">{Math.round(food.food.nutrients.ENERC_KCAL)}kcal
                 <button onClick={selectFood}>select</button></div>
                 </div>
         </div>

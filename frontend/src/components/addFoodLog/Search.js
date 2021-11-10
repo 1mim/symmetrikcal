@@ -31,7 +31,7 @@ const Search = () => {
             <input className="search" type='text' value={input} placeholder="Search" onChange={handleInput} />
             </form>
 
-            {loading ? <p>loading...</p> :
+            {loading ? <p></p> :
                 error ? <p>{error}</p> : 
                     <div>
                         {results.hints.map((food) => (
