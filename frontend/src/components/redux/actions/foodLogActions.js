@@ -1,5 +1,5 @@
 import axios from "axios"
-import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, SELECT_FOOD_ITEM } from "../constants/foodLogConstants"
+import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, SELECT_FOOD_ITEM, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants"
 
 export const fetchFoodData = (input) => async (dispatch) => {
     dispatch({
@@ -21,15 +21,39 @@ export const fetchFoodData = (input) => async (dispatch) => {
 
 export const setFoodDataToLog = (food) => async (dispatch) => {
     const data = food;
+    let servingSize = 1;
     dispatch({
         type: SELECT_FOOD_ITEM,
         payload: {
             name: data.food.label,
-            calories: data.food.nutrients.ENERC_KCAL,
-            carbs: data.food.nutrients.CHOCDF,
-            protein: data.food.nutrients.PROCNT,
-            fats: data.food.nutrients.FAT,
-            servingSize: 100,
+            calories: data.food.nutrients.ENERC_KCAL * servingSize,
+            carbs: data.food.nutrients.CHOCDF * servingSize,
+            protein: data.food.nutrients.PROCNT * servingSize,
+            fats: data.food.nutrients.FAT * servingSize,
+            servingSize,
+            mealType: 'snack'
+        }
+    });
+
+}
+
+// export const updateFoodDataToLogValues = (qty) => async (dispatch) => {
+//     dispatch({
+//         type: UPDATE_FOOD_ITEM_VALUES,
+//         payload: qty
+//     });
+// }
+export const updateFoodDataToLogValues = (id, qty) => async (dispatch) => {
+    const data = id;
+    dispatch({
+        type: UPDATE_FOOD_ITEM_VALUES,
+        payload: {
+            name: data.name,
+            calories: data.calories * qty,
+            carbs: data.carbs * qty,
+            protein: data.protein * qty,
+            fats: data.fats * qty,
+            servingSize: qty,
             mealType: 'snack'
         }
     })

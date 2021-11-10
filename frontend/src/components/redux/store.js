@@ -4,10 +4,15 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { fetchFoodDataReducer, setFoodDataToLogReducer } from "./reducers/foodLogReducers";
 
-// const initialState = {
-//     listOfResults: {
-//         results: localStorage.getItem('results') ? JSON.parse(localStorage.getItem('results')) : []
-//     }
+const initialState = {
+    log: {
+        mealDataLog: localStorage.getItem('mealDataLog') ? JSON.parse(localStorage.getItem('mealDataLog')) : {}
+    }
+}
+
+
+// const log = {
+//     mealDataLog: localStorage.getItem('mealDataLog') ? JSON.parse(localStorage.getItem('mealDataLog')) : {}
 // }
 
 const reducer = combineReducers({
@@ -15,6 +20,6 @@ const reducer = combineReducers({
     foodItemData: setFoodDataToLogReducer,
 });
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
 
 export default store;
