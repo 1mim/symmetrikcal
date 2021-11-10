@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
+import { setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
 
 const FoodLogDetail = () => {
-
+    const dispatch = useDispatch()
     const { loading, error, foodItem } = useSelector(state => state.foodItemData)
 
     const [servingSize, setServingSize] = useState(100);
@@ -11,7 +11,16 @@ const FoodLogDetail = () => {
         setServingSize(e.target.value)
     }
 
-    const dispatch = useDispatch()
+    //defining the options as strings
+    const snack = 'snack';
+    const breakfast = 'breakfast';
+    const lunch = 'lunch';
+    const dinner = 'dinner';
+
+    const handleMealTypeSelection = (e) => {
+        dispatch(setMealTypeSelection(foodItem, e.target.value))
+    }
+
     const updateValues = (e) => {
         e.preventDefault()
         dispatch(updateFoodDataToLogValues(foodItem, servingSize))
@@ -29,10 +38,17 @@ const FoodLogDetail = () => {
             <h5>Fats: {Math.round((foodItem.fats + Number.EPSILON) * 100) / 100}g</h5>
 
             <form onSubmit={updateValues}>
-            {/* <form> */}
             <input className="search" onChange={updateServingSize} type="text" value={servingSize} placeholder={foodItem.servingSize}></input>
             </form>
-          </div>      )}
+
+                <select onChange={handleMealTypeSelection}>
+                <option value={snack}>Snack</option>            
+                <option value={breakfast}>Breakfast</option>            
+                <option value={lunch}>Lunch</option>            
+                <option value={dinner}>Dinner</option>            
+                </select>
+
+          </div>)}
         </div>
     )
 }

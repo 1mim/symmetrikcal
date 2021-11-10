@@ -8,3 +8,7 @@ export const SELECT_FOOD_ITEM = 'SELECT_FOOD_ITEM';
 
 //updating the values of the food item
 export const UPDATE_FOOD_ITEM_VALUES = 'UPDATE_FOOD_ITEM_VALUES';
+
+//setting the mealtype of the foodlog
+export const SET_FOOD_MEALTYPE = 'SET_FOOD_MEALTYPE';
+
