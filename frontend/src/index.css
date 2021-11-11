@@ -1,24 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
+
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Sora", sans-serif;
+  background: #26292d;
+  color: #f7e8de;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* sidenavbar */
+.navbar-container {
+  display: flex;
+  padding: 0rem;
+  background-color: #101418;
+  color: #e7ad99;
+  width: 20%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 2rem;
+  height: 100vh;
+  justify-content: space-evenly;
+}
+
+.navbar-links {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  line-height: 3rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-top: -2rem;
+  text-align: left;
 }
 
 /* for logging new food page */
 .page-container {
   display: flex;
-  flex-flow: row wrap;
+  position: relative;
+  /* flex-grow: 1; */
+  /* flex-flow: row wrap; */
   justify-content: space-evenly;
   padding: 0rem;
   margin-top: 2rem;
   list-style: none;
   gap: 3rem 0rem;
+  width: 80%;
+  margin-left: 20%;
   /* height: 100vh; */
 }
 
@@ -29,43 +61,55 @@ code {
   /* margin: 1rem 3rem; */
 }
 
+.section-half-right {
+  /* display: flex; */
+  position: static;
+  width: 50%;
+  margin-left: -3%;
+  /* margin: 1rem 3rem; */
+}
+
 /* search input */
 input.search {
+  background: #3a3c40;
   display: inline-block;
-  padding: 1.45em 3em;
-  width: 30rem;
+  padding: 1em 2em 1em 1em;
+  margin: 1rem 1.5rem 1rem 3rem;
+  width: 85%;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  border-bottom: 2px solid black;
   transition: all 0.15s;
+  border-radius: 0.4rem;
+  color: #f7e8de;
 }
 
 /* result card */
 .result-card {
-  border-radius: 0.3rem;
-  /* border: 1px solid #D9CFC1; */
-  border: 1px solid #af8d86;
-  /* border: 1px solid #EECA81; */
-  /* flex-grow: 2; */
+  border-radius: 0.5rem;
+  background-color: #101418;
   max-width: 100%;
   height: 30px;
   padding: 1em 2em 1em 1em;
-  margin: 1rem 3rem;
-  /* width: 100%; */
+  margin: 1rem 1.5rem 1rem 3rem;
   justify-content: space-around;
   display: flex;
   align-items: center;
-  /* flex-shrink: 1; */
   text-align: left;
 }
 
 .result-card:hover {
   /* border: 1px solid #D9CFC1; */
-  background-color: #af8d86;
+  background: linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  color: #101418;
   cursor: pointer;
+  transform: scale(104%);
   transition: ease-in-out 0.15s;
-  transform: scale(105%);
 }
 
 .result-content {
@@ -84,76 +128,110 @@ input.search {
 
 /* serving size input */
 input.servingSize {
+  background-color: #26292d;
+  color: #f7e8de;
   display: inline-block;
   padding: 0.8em;
-  width: 8.5rem;
+  width: 8rem;
+  font-size: 0.75rem;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  border: 1px solid tomato;
-  border-radius: 0.3em;
+  border-radius: 0.3rem;
   transition: all 0.15s;
+  /* text-align: right; */
 }
 
 input.dateSelect {
+  background: #26292d;
+  color: #f7e8de;
   display: inline-block;
   padding: 0.8em;
-  width: 8.5rem;
+  width: 8rem;
+  font-size: 0.75rem;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  /* font-size: 0.7rem; */
   font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: -0.05rem;
-  border: 1px solid tomato;
-  border-radius: 0.3em;
+  /* letter-spacing: 0.1rem; */
+  /* border: 1px solid tomato; */
+  border-radius: 0.3rem;
   transition: all 0.15s;
 }
 
 select.mealType {
+  background: #26292d;
+  color: #f7e8de;
   display: inline-block;
   padding: 0.8em;
-  width: 8.5rem;
+  width: 8rem;
+  font-size: 0.75rem;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
-  border: 1px solid tomato;
-  border-radius: 0.3em;
+  /* border: 1px solid tomato; */
+  border-radius: 0.3rem;
   transition: all 0.15s;
+  /* text-align: right; */
+}
+
+.detailContain {
+  background-color: #101418;
+  border-radius: 1rem;
+  /* max-width: 100%;
+  min-height: 100%; */
+  padding: 2rem;
+  margin: 1rem 3rem;
+  /* display: flex;
+  align-items: center; */
 }
 
 .logDetail {
-  border-radius: 0.3rem;
-  /* border: 1px solid #D9CFC1; */
-  border: 1px solid #af8d86;
-  /* border: 1px solid #EECA81; */
-  /* flex-grow: 2; */
-  max-width: 80%;
-  /* height: 30px; */
-  padding: 1em 2rem;
-  margin: 1rem 3rem;
-  /* width: 100%; */
+  max-width: 100%;
+  min-height: 100%;
+  padding: 0.7rem 0rem;
   justify-content: space-around;
   display: flex;
   align-items: center;
-  /* flex-shrink: 1; */
   text-align: left;
+}
+
+.borderbottom {
+  border-bottom: 0.15em dotted #1c1e21;
 }
 
 .logDetail-right {
   text-align: right;
 }
 
+label {
+  font-size: 0.8rem;
+  color: #e7ad99;
+}
+
 button.addToLog {
   display: inline-block;
   padding: 1em;
+  margin-top: 1rem;
   width: 15rem;
   border: none;
   box-sizing: border-box;
   text-decoration: none;
   text-transform: uppercase;
-  color: aliceblue;
-  background-color: black;
-  /* border-radius: 0.3em; */
+  color: #101418;
+  background: #e7ad99;
+  border-radius: 0.3rem;
   transition: all 0.15s;
+}
+
+button.addToLog:hover {
+  color: #101418;
+  background: linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  transition: all 0.15s;
+  cursor: pointer;
 }

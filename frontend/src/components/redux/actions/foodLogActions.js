@@ -52,7 +52,7 @@ export const updateFoodDataToLogValues = (id, qty) => async (dispatch) => {
             fats: data.fats * servingSize,
             servingSize: qty,
             mealType: data.mealType,
-            date: Date()
+            date: data.date
         }
     })
 }
@@ -69,7 +69,7 @@ export const setMealTypeSelection = (id, mealType) => async (dispatch) => {
             fats: data.fats,
             servingSize: data.servingSize,
             mealType: mealType,
-            date: Date()
+            date: data.date
         }
     })
 }

@@ -24,7 +24,8 @@ const Search = () => {
     return (
         <div>
             <form onSubmit={handleSearch}>
-            <input className="search" type='text' value={input} placeholder="Search" onChange={handleInput} />
+                <h2>Search</h2>
+            <input className="search" type="search" value={input} placeholder="Search" onChange={handleInput} />
             </form>
 
             {loading ? <p></p> :

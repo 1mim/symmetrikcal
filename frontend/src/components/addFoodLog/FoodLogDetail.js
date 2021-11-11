@@ -53,14 +53,14 @@ const FoodLogDetail = () => {
           labels: ['Carbs(g)', 'Protein(g)', 'Fats(g)'],
             data: [carbs, protein, fats],
           backgroundColor: [
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)',
+            'rgba(251, 209, 233, 0.2)',
+            'rgba(186, 206, 243, 0.2)',
+            'rgba(255, 223, 183, 0.2)',
           ],
           borderColor: [
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)',
+            'rgba(251, 209, 233, 1)',
+            'rgba(186, 206, 243, 1)',
+            'rgba(255, 223, 183, 1)',
           ],
           borderWidth: 1
         }]
@@ -70,12 +70,13 @@ const FoodLogDetail = () => {
         indexAxis: 'y',
         // Elements options apply to all of the options unless overridden in a dataset
         // In this case, we are setting the border of each horizontal bar to be 2px wide
+        maintainAspectRation: false,
         elements: {
           bar: {
             borderWidth: 2,
             },
             labels: {
-
+                color: 'rgba(255, 223, 183, 1)'
             }
         },
         responsive: true,
@@ -92,29 +93,29 @@ const FoodLogDetail = () => {
       };
 
     return (
-        <div>
+        <div >
             {foodItem === {} ? <div> </div> :
                 loading ? <p></p> :
                 error ? <p>{error}</p> : (
                     
-                <div>
+                <div className='detailContain'>
                             <div className="logDetail">
                             <div className="result-content">
                       <div>  <h2>{foodItem.name}</h2></div>
                      <div className="logDetail-right">   <h2>{Math.round(foodItem.calories)}kcal</h2></div>
                                 </div></div>
-                            <div className='logDetail'>
-                                <Bar data={data} options={options} height={80}/>
+                            <div className='logDetail borderbottom'>
+                                <Bar data={data} options={options} height={110}/>
                             </div>
 
 
-            <form onSubmit={updateValues} className="logDetail">
+            <form onSubmit={updateValues} className="logDetail borderbottom">
                             <div className="result-content">
                          <div><label>Serving Size(g)</label></div>
             <div className="logDetail-right"><input className="servingSize" onChange={updateServingSize} type="text" value={servingSize} placeholder={foodItem.servingSize}></input></div>
            </div>
                         </form>
-                        <div className="logDetail">
+                        <div className="logDetail borderbottom">
                         <div className="result-content">
                         <div>   <label> Meal Type </label></div>
               <div className="logDetail-right">  <select onChange={handleMealTypeSelection} className="mealType">
@@ -125,16 +126,16 @@ const FoodLogDetail = () => {
                             </select> </div>
                                 </div></div>
                             
-                        <div className="logDetail">
+                        <div className="logDetail borderbottom">
                         <div className="result-content">
                         <div>   <label> Date </label></div>
                                     <div className="logDetail-right">
                                         <input type="date" onChange={handleDateSelect} className="dateSelect"/>
                             </div>
-                      </div></div>
-
+                      </div></div><br/>
+                      <button onClick={logMealToDB} className="addToLog">Add To Log</button>
                         </div>)}
-            <button onClick={logMealToDB} className="addToLog">Add To Log</button>
+            
         </div>
     )
 }
