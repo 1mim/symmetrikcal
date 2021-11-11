@@ -4,6 +4,7 @@ const SideNavbar = () => {
     return (
         <div>
             <div><h3>symmetri<em>kcal</em></h3></div>
+            {/* <div><h3><em>kcal</em></h3></div> */}
             <div className='navbar-links'>
                 <div>Overview</div>
                 <div>Diary</div>

@@ -12,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//api endpoints
 app.use('/users', userRouter);
 app.use('/foodlogs', foodLogRouter);
 

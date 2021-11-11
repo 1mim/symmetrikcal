@@ -89,7 +89,7 @@ input.search {
   border-radius: 0.5rem;
   background-color: #101418;
   max-width: 100%;
-  height: 30px;
+  /* height: 30px; */
   padding: 1em 2em 1em 1em;
   margin: 1rem 1.5rem 1rem 3rem;
   justify-content: space-around;
@@ -113,7 +113,7 @@ input.search {
 }
 
 .result-content {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   display: inline-grid;
   align-items: center;
   /* margin: 0 0 0 5em; */
@@ -180,7 +180,7 @@ select.mealType {
   border-radius: 1rem;
   /* max-width: 100%;
   min-height: 100%; */
-  padding: 2rem;
+  padding: 0.4rem 2rem 2rem 2rem;
   margin: 1rem 3rem;
   /* display: flex;
   align-items: center; */
@@ -197,7 +197,7 @@ select.mealType {
 }
 
 .borderbottom {
-  border-bottom: 0.15em dotted #1c1e21;
+  border-bottom: 0.1em solid #1c1e21;
 }
 
 .logDetail-right {
