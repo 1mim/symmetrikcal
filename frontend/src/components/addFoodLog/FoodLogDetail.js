@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
+import { dateSelection, setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
 import { Bar } from 'react-chartjs-2';
 
 
@@ -8,9 +8,14 @@ const FoodLogDetail = () => {
     const dispatch = useDispatch()
     const { loading, error, foodItem } = useSelector(state => state.foodItemData)
 
-    const [servingSize, setServingSize] = useState(100);
+    const [servingSize, setServingSize] = useState(foodItem.servingSize);
     const updateServingSize = (e) => {
         setServingSize(e.target.value)
+    }
+
+    const updateValues = (e) => {
+        e.preventDefault()
+        dispatch(updateFoodDataToLogValues(foodItem, servingSize))
     }
 
     //defining the options as strings
@@ -23,9 +28,17 @@ const FoodLogDetail = () => {
         dispatch(setMealTypeSelection(foodItem, e.target.value))
     }
 
-    const updateValues = (e) => {
-        e.preventDefault()
-        dispatch(updateFoodDataToLogValues(foodItem, servingSize))
+    //handling date selection
+    // const [dateSelect, setDateSelect] = useState(Date.now())
+    const handleDateSelect = (e) => {
+        // setDateSelect(e.target.value)
+        dispatch(dateSelection(foodItem, e.target.value))
+    }
+
+    const logMealToDB = () => {
+        //add dispatch to post to DB
+        //action to also clear the foodItem data
+        console.log('Sent to DB')
     }
 
     //displaying it w chart.js
@@ -60,7 +73,10 @@ const FoodLogDetail = () => {
         elements: {
           bar: {
             borderWidth: 2,
-          },
+            },
+            labels: {
+
+            }
         },
         responsive: true,
         plugins: {
@@ -84,8 +100,8 @@ const FoodLogDetail = () => {
                 <div>
                             <div className="logDetail">
                             <div className="result-content">
-                      <div>  <h3>{foodItem.name}</h3></div>
-                     <div className="logDetail-right">   <h3>{Math.round((foodItem.calories + Number.EPSILON) * 100) / 100}kcal</h3></div>
+                      <div>  <h2>{foodItem.name}</h2></div>
+                     <div className="logDetail-right">   <h2>{Math.round(foodItem.calories)}kcal</h2></div>
                                 </div></div>
                             <div className='logDetail'>
                                 <Bar data={data} options={options} height={80}/>
@@ -107,9 +123,18 @@ const FoodLogDetail = () => {
                 <option value={lunch}>Lunch</option>            
                 <option value={dinner}>Dinner</option>           
                             </select> </div>
-                            </div></div>
+                                </div></div>
+                            
+                        <div className="logDetail">
+                        <div className="result-content">
+                        <div>   <label> Date </label></div>
+                                    <div className="logDetail-right">
+                                        <input type="date" onChange={handleDateSelect} className="dateSelect"/>
+                            </div>
+                      </div></div>
 
-          </div>)}
+                        </div>)}
+            <button onClick={logMealToDB} className="addToLog">Add To Log</button>
         </div>
     )
 }

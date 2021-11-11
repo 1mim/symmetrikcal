@@ -12,3 +12,6 @@ export const UPDATE_FOOD_ITEM_VALUES = 'UPDATE_FOOD_ITEM_VALUES';
 //setting the mealtype of the foodlog
 export const SET_FOOD_MEALTYPE = 'SET_FOOD_MEALTYPE';
 
+//selecting the date if you want
+export const SELECT_FOOD_DATE = 'SELECT_FOOD_DATE';
+
