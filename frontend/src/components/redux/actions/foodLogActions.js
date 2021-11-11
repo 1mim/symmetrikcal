@@ -22,6 +22,7 @@ export const fetchFoodData = (input) => async (dispatch) => {
 export const setFoodDataToLog = (food) => async (dispatch) => {
     const data = food;
     let servingSize = 100;
+    let mealType = 'snack'
     dispatch({
         type: SELECT_FOOD_ITEM,
         payload: {
@@ -31,7 +32,7 @@ export const setFoodDataToLog = (food) => async (dispatch) => {
             protein: data.food.nutrients.PROCNT,
             fats: data.food.nutrients.FAT,
             servingSize,
-            mealType: data.mealType
+            mealType
         }
     });
 }

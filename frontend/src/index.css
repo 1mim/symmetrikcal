@@ -73,3 +73,50 @@ input.search {
 .result-content-kcal {
   text-align: right;
 }
+
+/* serving size input */
+input.servingSize {
+  display: inline-block;
+  padding: 0.8em;
+  width: 7rem;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 1px solid tomato;
+  border-radius: 0.3em;
+  transition: all 0.15s;
+}
+
+select.mealType {
+  display: inline-block;
+  padding: 0.8em;
+  width: 7rem;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 1px solid tomato;
+  border-radius: 0.3em;
+  transition: all 0.15s;
+}
+
+.logDetail {
+  border-radius: 0.3rem;
+  /* border: 1px solid #D9CFC1; */
+  border: 1px solid #af8d86;
+  /* border: 1px solid #EECA81; */
+  /* flex-grow: 2; */
+  max-width: 80%;
+  /* height: 30px; */
+  padding: 1em;
+  margin: 1rem 3rem;
+  /* width: 100%; */
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  /* flex-shrink: 1; */
+  text-align: left;
+}
+
+.logDetail-right {
+  text-align: right;
+}

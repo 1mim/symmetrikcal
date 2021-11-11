@@ -13,11 +13,12 @@ const ResultsCard = ({ food }) => {
     }
 
     return (
-        <div className="result-card">
+        <div className="result-card" onClick={selectFood}>
             <div className="result-content">
             <div>{food.food.label}</div>
                 <div className="result-content-kcal">{Math.round(food.food.nutrients.ENERC_KCAL)}kcal
-                <button onClick={selectFood}>select</button></div>
+                    {/* <button onClick={selectFood}>select</button> */}
+                </div>
                 </div>
         </div>
     )

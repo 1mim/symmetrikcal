@@ -17,11 +17,7 @@ const Search = () => {
     const handleSearch = (e) => {
         e.preventDefault()
         dispatch(fetchFoodData(input))
-        // setSearchResults(results)
     }
-
-    // const [searchResults, setSearchResults] = useState([]);
-    // const [selectedFood, setSelectedFood] = useState({});
 
 
 
@@ -32,7 +28,8 @@ const Search = () => {
             </form>
 
             {loading ? <p></p> :
-                error ? <p>{error}</p> : 
+                error ? <p>{error}</p> :
+                    results.text === input && results.parsed === [] && results.hints === [] ? 'No results found. Try something else.' :
                     <div>
                         {results.hints.map((food) => (
                            <ResultsCard key={food.food.foodId} food={food}/>
