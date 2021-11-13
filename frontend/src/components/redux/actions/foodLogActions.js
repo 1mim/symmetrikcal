@@ -1,5 +1,5 @@
 import axios from "axios"
-import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants"
+import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, LOG_FOOD_REQUEST, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants"
 
 export const fetchFoodData = (input) => async (dispatch) => {
     dispatch({
@@ -91,3 +91,10 @@ export const dateSelection = (id, dateSelected) => async (dispatch) => {
     })
 }
 
+// export const logFood = (id) => async (dispatch, getState) => {
+//     dispatch({ type: LOG_FOOD_REQUEST, payload: id });
+//     try {
+//         const { userLogin: { usesInfo }, } = getState();
+//         const 
+//     }
+// }

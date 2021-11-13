@@ -38,6 +38,7 @@ const FoodLogDetail = () => {
     const logMealToDB = () => {
         //add dispatch to post to DB
         //action to also clear the foodItem data
+        //dispatch(logFood(foodItem))
         console.log('Sent to DB')
     }
 
