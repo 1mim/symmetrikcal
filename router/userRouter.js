@@ -26,35 +26,6 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-//create new user
-router.post('/register', async (req, res) => {
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8),
-        targetKcal: req.body.targetKcal,
-        targetCarbs: req.body.targetCarbs,
-        targetProtein: req.body.targetProtein,
-        targetFats: req.body.targetFats,
-        currentWeight: req.body.currentWeight,
-        targetWeight: req.body.targetWeight,
-    });
-    const createdUser = await user.save();
-    res.send({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        targetKcal: user.targetKcal,
-        targetCarbs: user.targetCarbs,
-        targetProtein: user.targetProtein,
-        targetFats: user.targetFats,
-        currentWeight: user.currentWeight,
-        targetWeight: user.targetWeight,
-        token: generateToken(createdUser),
-
-    })
-})
-
 //user login
 router.post('/login', async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
@@ -70,6 +41,54 @@ router.post('/login', async (req, res) => {
         }
     }
     res.status(401).send({message: 'Invalid email or password'})
+})
+
+//create new user
+router.post('/register', async (req, res) => {
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 8),
+        // targetKcal: req.body.targetKcal,
+        // targetCarbs: req.body.targetCarbs,
+        // targetProtein: req.body.targetProtein,
+        // targetFats: req.body.targetFats,
+        // currentWeight: req.body.currentWeight,
+        // targetWeight: req.body.targetWeight,
+    });
+    const createdUser = await user.save();
+    res.send({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        // targetKcal: user.targetKcal,
+        // targetCarbs: user.targetCarbs,
+        // targetProtein: user.targetProtein,
+        // targetFats: user.targetFats,
+        // currentWeight: user.currentWeight,
+        // targetWeight: user.targetWeight,
+        token: generateToken(createdUser),
+
+    })
+})
+
+//updating user info
+router.put('/update', isAuth, async (req, res) => {
+    const user = await User.findById(req.user._id);
+    if (user) {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        if (req.body.password) {
+            user.password = bcrypt.hashSync(req.body.password, 8);
+        }
+        const updatedUser = await user.save();
+        res.send({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            token: generateToken(updatedUser), 
+        })
+    }
 })
 
 module.exports = router;

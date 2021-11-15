@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //api endpoints
-app.use('/users', userRouter);
-app.use('/foodlogs', foodLogRouter);
+app.use('/user', userRouter);
+app.use('/foodlog', foodLogRouter);
 
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });

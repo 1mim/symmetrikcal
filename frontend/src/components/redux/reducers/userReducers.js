@@ -1,7 +1,7 @@
 import { SET_ACCOUNT_DETAILS, SET_ACCOUNT_MACROS, SET_ACCOUNT_WEIGHT, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants";
 
 
-export const createNewUserReducer = (state = {}, action) => {
+export const userRegisterReducer = (state = {}, action) => {
     switch (action.type) {
         case USER_REGISTER_REQUEST:
             return { loading: true };
@@ -12,7 +12,7 @@ export const createNewUserReducer = (state = {}, action) => {
         default:
             return state;
     }
-};
+}
 
 export const userLoginReducer = (state = {}, action) => {
     switch (action.type) {

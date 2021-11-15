@@ -21,7 +21,7 @@ function App() {
             <Route path='/' element={<WelcomeScreen />} />
             <Route path='/login' element={<LoginScreen />} />
             <Route path='/signup' element={<SignUpScreen />} />
-            <Route path='/signup/macros' element={<SetMacrosScreen />} />
+            {/* <Route path='/signup/macros' element={<SetMacrosScreen />} /> */}
 
             <Route path='/newlog' element={<NewLogScreen />} />
             <Route path='/diary/:id' element={<DiaryScreen />} />

@@ -1,48 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { logout, register, setUserDetails } from '../redux/actions/userActions';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout, register } from '../redux/actions/userActions';
 
 const SignUpScreen = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    // const { newUser } = useSelector(state => state.newUserInfo)
+    const { userInfo, loading, error } = useSelector(state => state.userRegister)
 
-     const [name, setName] = useState('');
-     const [email, setEmail] = useState('');
-     const [password, setPassword] = useState('');
-     const [verifyPassword, setVerifyPassword] = useState('');
- 
-     const handleNameChange = (e) => {
-         setName(e.target.value)
-     }
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [verifyPassword, setVerifyPassword] = useState('');
     
-     const handleEmailChange = (e) => {
-         setEmail(e.target.value)
-     }
  
-     const handlePasswordChange = (e) => {
-         setPassword(e.target.value)
-     }
-    
-     const handleVerifyPasswordChange = (e) => {
-         setVerifyPassword(e.target.value)
-     }
- 
-     const handleSubmit = (e) => {
-         e.preventdefault();
-        //  if (password !== verifyPassword) {
-        //      alert('Password and confirm password do not matched.')
-        //  } else {
-        //  console.log('registering')
-             dispatch(register(name, email, password));
-        //  history.push('/signup-macros')
+    const handleSubmit = async (e) => {
+        e.preventdefault();
+        if (password !== verifyPassword) {
+            alert('Password and confirm password do not matched.')
+        } else {
+            
+            dispatch(register(name, email, password));
+            // navigate('/newlog')
         
-     }
+        }
+    }
     
     const handleLogout = () => {
         dispatch(logout())
     }
+         
+    useEffect(() => {
+        if (userInfo) {
+            navigate('/newlog', {replace: true})
+        }
+    }, [navigate, userInfo])
 
     return (
         <div className='welcomecontain'>
@@ -59,16 +52,21 @@ const SignUpScreen = () => {
             </div>
 
             <div className='formright'>
-            <form onSubmit={handleSubmit}>
+            
                     <div className='greeting'>Create New Account</div>
-                <div className='middle'>
-                <input className="login" type="text" value={name} placeholder="Name" onChange={handleNameChange} />
-                <input className="login" type="email" value={email} placeholder="Email" onChange={handleEmailChange} />
-                <input className="login" type="password" value={password} placeholder="Password" onChange={handlePasswordChange} />
-                <input className="login" type="password" value={verifyPassword} placeholder="Confirm Password" onChange={handleVerifyPasswordChange} />
-                <button className='login2' type='submit' >Register</button>
+                    <div className='middle'>
+                    {/* <form onSubmit={handleSubmit}> */}
+                    <form>
+                {loading && <div>loading..</div>}
+                {error && <div>{error}</div>}
+                <input className="login" type="text" id="name" placeholder="Name" required onChange={ async (e) => setName(e.target.value)} />
+                <input className="login" type="email" id="email" placeholder="Email" required onChange={ async (e) => setEmail(e.target.value)} />
+                <input className="login" type="password" id="password" placeholder="Password" required onChange={ async (e) => setPassword(e.target.value)} />
+                <input className="login" type="password" id="verifyPassword" placeholder="Confirm Password" required onChange={ async (e) => setVerifyPassword(e.target.value)} />
+                <button className="login2" type="submit" onClick={handleSubmit}>Register</button>
+                </form>
                 </div>
-            </form>
+            
             <div className="bottomliner">
                 Already have an account? <Link to="/login"><span className='createacc'>Login here.</span></Link>
             </div>

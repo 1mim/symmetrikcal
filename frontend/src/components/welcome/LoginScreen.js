@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../redux/actions/userActions';
 import './login.css';
 
 
 const LoginScreen = () => {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value)
-    }
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+    const { userInfo, loading, error } = useSelector(state => state.userLogin)
 
     const handleLogin = (e) => {
         e.preventdefault();
-        console.log('signing in')
-        // dispatch(loginAction(email, password))
+        dispatch(login(email, password))
+        // navigate('/newlog', {replace: true})
+        navigate(-1)
     }
+    
+    useEffect(() => {
+        if (userInfo) {
+            // navigate('/newlog', {replace: true})
+            navigate(-1)
+        }
+    }, [navigate, userInfo])
+
     return (
         <div className='welcomecontain'>
             <div className='loginform'>
@@ -36,14 +42,18 @@ const LoginScreen = () => {
                 </div>
 
                 <div className='formright'>
-                <form onSubmit={handleLogin}>
+                
                         <div className='greeting'>Login</div>
                     <div className='middle'>
-                    <input className="login" type="email" value={email} placeholder="email" onChange={handleEmailChange} />
-                    <input className="login" type="password" value={password} placeholder="password" onChange={handlePasswordChange} />
+                    <form onSubmit={handleLogin}>
+                    {loading && <div>loading..</div>}
+                    {error && <div>{error}</div>}
+                    <input className="login" type="email" id="email" placeholder="email" required onChange={(e) => setEmail(e.target.value)} />
+                    <input className="login" type="password" id="password" placeholder="password" required onChange={(e) => setPassword(e.target.value)} />
                     <button className='login2' type='submit'>Login</button>
+                    </form>
                     </div>
-                </form>
+                
                 <div className="bottomliner">
                     Dont have an account? <Link to="/signup"><span className='createacc'>Create one now.</span></Link>
                 </div>
