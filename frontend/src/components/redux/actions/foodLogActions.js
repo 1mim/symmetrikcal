@@ -119,6 +119,7 @@ export const logFood = (values) => async (dispatch, getState) => {
             }
         });
         localStorage.removeItem('foodItem');
+        dispatch({ type: LOG_FOOD_RESET, payload: {} });
     } catch (error) {
         dispatch({
             type: LOG_FOOD_FAIL,

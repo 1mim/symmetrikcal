@@ -18,16 +18,16 @@ const LoginScreen = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(login(email, password))
-        // navigate('/welcome', {replace: true})
+        navigate('/newlog', {replace: true})
         // navigate(-1)
     }
     
-    useEffect(() => {
-        if (userInfo) {
-            navigate('/newlog', {replace: true})
-            // navigate(-1)
-        }
-    }, [navigate, userInfo])
+    // useEffect(() => {
+    //     if (!userInfo === {}) {
+    //         navigate('/newlog', {replace: true})
+    //         // navigate(-1)
+    //     }
+    // }, [navigate, userInfo])
 
     return (
         <div className='welcomecontain'>

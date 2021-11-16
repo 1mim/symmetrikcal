@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { dateSelection, logFood, setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
 import { Bar } from 'react-chartjs-2';
-import { LOG_FOOD_RESET } from '../redux/constants/foodLogConstants';
+// import { LOG_FOOD_RESET } from '../redux/constants/foodLogConstants';
 
 
 const FoodLogDetail = () => {
@@ -39,15 +39,17 @@ const FoodLogDetail = () => {
    
     const submitFoodtoDb = (e) => {
         e.preventDefault();
-        dispatch(logFood(foodItem))
+      dispatch(logFood(foodItem))
+      alert("food added to log")
+      
     }
 
-    useEffect(() => {
-        if (success) {
-            alert("food added to log")
-            dispatch({ type: LOG_FOOD_RESET });
-        }
-    }, [dispatch, success])
+    // useEffect(() => {
+    //     if () {
+    //         alert("food added to log")
+    //         // dispatch({ type: LOG_FOOD_RESET });
+    //     }
+    // }, [success, dispatch])
 
     //displaying it w chart.js
 

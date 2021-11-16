@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { fetchFoodDataReducer, logFoodToDbReducer, setFoodDataToLogReducer } from "./reducers/foodLogReducers";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import { userLoginReducer, userRegisterReducer, updateUserAccountReducer, userAccountDetailsReducer } from "./reducers/userReducers";
 
 const initialState = {
     userLogin: {
@@ -21,6 +21,8 @@ const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     logFoodtoDb: logFoodToDbReducer,
+    updateUserAccount: updateUserAccountReducer,
+    userAccountDetails: userAccountDetailsReducer,
 });
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));

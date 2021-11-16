@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: "Sora", sans-serif;
-  background: #191f27;
+  background: #12171d;
   color: #f7e8de;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -48,6 +48,12 @@ input[type="search"]::-webkit-search-cancel-button {
 input[type="search"]:focus::-webkit-search-cancel-button {
   opacity: 0.5;
   pointer-events: all;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* sidenavbar */

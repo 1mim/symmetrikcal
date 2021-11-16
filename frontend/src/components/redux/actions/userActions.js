@@ -1,13 +1,41 @@
 import axios from "axios";
-import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants";
+import { GET_ACCOUNT_DETAILS_FAIL, GET_ACCOUNT_DETAILS_REQUEST, GET_ACCOUNT_DETAILS_SUCCESS, UPDATE_USER_FAIL, UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from "../constants/userConstants";
 
-export const register = (name, email, password) => async (dispatch) => {
+// export const register = (name, email, password) => async (dispatch) => {
+//     dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
+//     try {
+//         const { data } = await axios.post('/user/register', {
+//             name,
+//             email,
+//             password,
+//         });
+//         dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+//         dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+//         localStorage.setItem('userInfo', JSON.stringify(data));
+
+//     } catch (error) {
+//         dispatch({
+//             type: USER_REGISTER_FAIL,
+//             payload: error.response && error.response.data.message
+//                 ? error.response.data.message
+//                 : error.message,
+//         })
+//     }
+// }
+
+export const register = (name, email, password, targetKcal, targetCarbs, targetProtein, targetFats, currentWeight, targetWeight) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
     try {
         const { data } = await axios.post('/user/register', {
             name,
             email,
             password,
+            targetKcal,
+            targetCarbs,
+            targetProtein,
+            targetFats,
+            currentWeight,
+            targetWeight
         });
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
         dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
@@ -46,105 +74,54 @@ export const logout = () => (dispatch) => {
     document.location.href = '/login';  
 }
 
+export const updateUserInfo = (name, email, password, targetKcal, targetCarbs, targetProtein, targetFats, currentWeight, targetWeight) => async (dispatch, getState) => {
+    dispatch({
+        type: UPDATE_USER_REQUEST,
+        payload: { name, email, password, targetKcal, targetCarbs, targetProtein, targetFats, currentWeight, targetWeight }
+    });
+    const { userLogin: { userInfo }, } = getState();
+    try {
+        const { data } = await axios.put(`/user/update`, {
+            name,
+            email,
+            password,
+            targetKcal,
+            targetCarbs,
+            targetProtein,
+            targetFats,
+            currentWeight,
+            targetWeight
+        }, {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+        dispatch({ type: UPDATE_USER_SUCCESS, payload: data });
+        dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+        localStorage.setItem('userInfo', JSON.stringify(data));
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message;
+        dispatch({ type: UPDATE_USER_FAIL, payload: message });
+    }
+}
 
-
-// export const register = (name, email, password) => async (dispatch) => {
-//     dispatch({ type: USER_REGISTER_REQUEST });
-//     try {
-//         const { data } = await axios.post('/user/register', { name, email, password });
-//         dispatch({
-//             type: USER_REGISTER_SUCCESS,
-//             payload: {
-//                 name: data.name,
-//                 email: data.email,
-//                 password: data.password
-//             }
-//         });
-//         // dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-//         localStorage.setItem('userInfo', JSON.stringify(data));
-
-//     } catch (error) {
-//         dispatch({
-//             type: USER_REGISTER_FAIL,
-//             payload: error.response && error.response.data.message
-//                 ? error.response.data.message
-//                 : error.message,
-//         })
-//     }
-// }
-
-// export const register = (name, email, password) => async (dispatch) => {
-//     dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
-//     try {
-//         const { data } = await axios.post('/user/register', { name, email, password });
-//         dispatch({
-//             type: USER_REGISTER_SUCCESS,
-//             payload: {
-//                 name: data.name,
-//                 email: data.email,
-//                 password: data.password,
-//                 // targetKcal: 0,
-//                 // targetCarbs: 0,
-//                 // targetProtein: 0,
-//                 // targetFats: 0,
-//                 // currentWeight: 0,
-//                 // targetWeight: 0,
-//        }
-//         });
-//         dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-//         localStorage.setItem('userInfo', JSON.stringify(data));
-//     } catch (error) {
-//         dispatch({
-//             type: USER_REGISTER_FAIL,
-//             payload: error.response && error.response.data.message
-//             ? error.response.data.message
-//             : error.message,
-//         })
-//     }
-// }
-
-
-// export const setUserDetails = (name, email, password) => async (dispatch, getState) => {
-//     dispatch({
-//         type: SET_ACCOUNT_DETAILS,
-//         payload: {
-//                 name: name,
-//                 email: email,
-//                 password: password,
-//                 targetKcal: 0,
-//                 targetCarbs: 0,
-//                 targetProtein: 0,
-//                 targetFats: 0,
-//                 currentWeight: 0,
-//                 targetWeight: 0,
-//        }
-//     })
-//     localStorage.setItem('setAccountDetails', JSON.stringify(getState().newUser.setAccountDetails))
-// }
-
-// export const setUserMacros = (targetKcal, targetCarbs, targetProtein, targetFats) => (dispatch, getState) => {
-//     dispatch({
-//         type: SET_ACCOUNT_MACROS,
-//         payload: {
-//                 targetKcal: targetKcal,
-//                 targetCarbs: targetCarbs,
-//                 targetProtein: targetProtein,
-//                 targetFats: targetFats,
-//                 // currentWeight: 0,
-//                 // targetWeight: 0,
-//        }
-//     })
-//     localStorage.setItem('setAccountMacros', JSON.stringify(getState().newUser.setAccountMacros))
-// }
-
-// export const setUserWeight = (currentWeight, targetWeight) => (dispatch, getState) => {
-//     dispatch({
-//         type: SET_ACCOUNT_WEIGHT,
-//         payload: {
-//                 currentWeight: currentWeight,
-//                 targetWeight: targetWeight,
-//        }
-//     })
-//     localStorage.setItem('setAccountWeight', JSON.stringify(getState().newUser.setAccountWeight))
-// }
-
+export const getAccountDetails = (userId) => async (dispatch, getState) => {
+    dispatch({
+        type: GET_ACCOUNT_DETAILS_REQUEST,
+        payload: userId
+    });
+    const { userLogin: { userInfo }, } = getState();
+    try {
+        const { data } = await axios.get(`/user/${userId}`, {
+            headers: { Authorization: `Bearer ${userInfo?.token}` },
+        });
+        dispatch({ type: GET_ACCOUNT_DETAILS_SUCCESS, payload: data });
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message;
+        dispatch({ type: GET_ACCOUNT_DETAILS_FAIL, payload: message });
+    }
+}

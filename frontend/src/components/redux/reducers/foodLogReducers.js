@@ -46,8 +46,8 @@ export const logFoodToDbReducer = (state = {}, action) => {
             return { loading: false, success: true, foodLog: action.payload };
         case LOG_FOOD_FAIL:
             return { loading: false, error: action.payload };
-        case LOG_FOOD_RESET:
-            return {};
+        // case LOG_FOOD_RESET:
+        //     return {};
         default:
             return state;
     }

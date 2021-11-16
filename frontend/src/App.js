@@ -5,6 +5,7 @@ import LoginScreen from './components/loginRegister/LoginScreen';
 import RegisterScreen from './components/loginRegister/RegisterScreen';
 import FoodLogScreen from './components/meallogging/FoodLogScreen';
 import SetMacrosScreen from './components/loginRegister/SetMacrosScreen';
+import SetWeightScreen from './components/loginRegister/SetWeightScreen';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path='/' element={<WelcomeScreen />}/>
         <Route path='/login' element={<LoginScreen />}/>
         <Route path='/signup' element={<RegisterScreen />}/>
-        <Route path='/macros' element={<SetMacrosScreen />}/>
+        <Route path='/set-macros' element={<SetMacrosScreen />}/>
+        <Route path='/set-weight' element={<SetWeightScreen />}/>
         <Route path='/newlog' element={<FoodLogScreen />}/>
     </Routes>
       </div>

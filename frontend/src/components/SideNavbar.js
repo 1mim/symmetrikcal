@@ -1,7 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logout } from './redux/actions/userActions';
 
 const SideNavbar = () => {
+
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
+
     return (
         <div>
             <div><h3>symmetri<em>kcal</em></h3></div>
@@ -15,6 +24,7 @@ const SideNavbar = () => {
             </div>
 
             <div>Username + target kcal and current weight here.</div>
+            <div> <button className='login2' onClick={handleLogout}>logout</button></div>
         </div>
     )
 }
