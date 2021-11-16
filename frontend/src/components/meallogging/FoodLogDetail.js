@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { dateSelection, setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
+import { dateSelection, logFood, setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
 import { Bar } from 'react-chartjs-2';
+import { LOG_FOOD_RESET } from '../redux/constants/foodLogConstants';
 
 
 const FoodLogDetail = () => {
@@ -29,18 +30,24 @@ const FoodLogDetail = () => {
     }
 
     //handling date selection
-    // const [dateSelect, setDateSelect] = useState(Date.now())
     const handleDateSelect = (e) => {
-        // setDateSelect(e.target.value)
         dispatch(dateSelection(foodItem, e.target.value))
     }
 
-    const logMealToDB = () => {
-        //add dispatch to post to DB
-        //action to also clear the foodItem data
-        //dispatch(logFood(foodItem))
+    //logging food to database!
+    const { success, foodLog } = useSelector(state => state.logFoodtoDb)
+   
+    const submitFoodtoDb = (e) => {
+        e.preventDefault();
+        dispatch(logFood(foodItem))
         console.log('Sent to DB')
     }
+
+    useEffect(() => {
+        if (success) {
+            dispatch({ type: LOG_FOOD_RESET });
+        }
+    }, [dispatch, success])
 
     //displaying it w chart.js
 
@@ -134,7 +141,7 @@ const FoodLogDetail = () => {
                                         <input type="date" onChange={handleDateSelect} className="dateSelect"/>
                             </div>
                       </div></div><br/>
-                      <button onClick={logMealToDB} className="addToLog">Add To Log</button>
+                      <button onClick={submitFoodtoDb} className="addToLog">Add To Log</button>
                         </div>)}
             
         </div>

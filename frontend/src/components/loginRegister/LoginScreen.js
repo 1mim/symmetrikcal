@@ -16,7 +16,7 @@ const LoginScreen = () => {
     const { userInfo, loading, error } = useSelector(state => state.userLogin)
 
     const handleLogin = (e) => {
-        e.preventdefault();
+        e.preventDefault();
         dispatch(login(email, password))
         // navigate('/welcome', {replace: true})
         // navigate(-1)
@@ -48,8 +48,8 @@ const LoginScreen = () => {
                     <form onSubmit={handleLogin}>
                     {loading && <div>loading..</div>}
                     {error && <div>{error}</div>}
-                    <input className="login" type="email" id="email" placeholder="email" required onChange={(e) => setEmail(e.target.value)} />
-                    <input className="login" type="password" id="password" placeholder="password" required onChange={(e) => setPassword(e.target.value)} />
+                    <input className="login" type="email" id="email" placeholder="email" required onChange={(e) => setEmail(e.target.value)}></input>
+                    <input className="login" type="password" id="password" placeholder="password" required onChange={(e) => setPassword(e.target.value)}></input>
                     <button className='login2' type='submit'>Login</button>
                     </form>
                     </div>

@@ -1,4 +1,4 @@
-import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants";
+import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, LOG_FOOD_FAIL, LOG_FOOD_REQUEST, LOG_FOOD_RESET, LOG_FOOD_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants";
 
 export const fetchFoodDataReducer = (state = { loading: true, results: [] }, action) => {
     switch (action.type) {
@@ -31,6 +31,21 @@ export const setFoodDataToLogReducer = (state = { foodItem: {} }, action) => {
             return { ...state, foodItem: action.payload }
         case SELECT_FOOD_DATE:
             return {...state, foodItem: action.payload}
+        default:
+            return state;
+    }
+}
+
+export const logFoodToDbReducer = (state = {}, action) => {
+    switch (action.type) {
+        case LOG_FOOD_REQUEST:
+            return { loading: true };
+        case LOG_FOOD_SUCCESS:
+            return { loading: false, success: true, foodLog: action.payload };
+        case LOG_FOOD_FAIL:
+            return { loading: false, error: action.payload };
+        case LOG_FOOD_RESET:
+            return {};
         default:
             return state;
     }
