@@ -9,6 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2 {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 a {
   text-decoration: none;
   color: rgba(251, 209, 233, 1);
@@ -236,9 +247,19 @@ select.mealType {
   text-align: right;
 }
 
-label {
+label.serving {
   font-size: 0.8rem;
-  color: #e7ad99;
+  color: rgba(251, 209, 233, 1);
+}
+
+label.mealtype {
+  font-size: 0.8rem;
+  color: rgba(186, 206, 243, 1);
+}
+
+label.date {
+  font-size: 0.8rem;
+  color: rgba(255, 223, 183, 1);
 }
 
 button.addToLog {
@@ -250,9 +271,13 @@ button.addToLog {
   box-sizing: border-box;
   text-decoration: none;
   text-transform: uppercase;
-  color: #101418;
-  background: #e7ad99;
-  border-radius: 0.3rem;
+  font-family: "Sora", sans-serif;
+  letter-spacing: 0.07rem;
+  font-weight: 500;
+  color: #f7e8de;
+  background: none;
+  border: 2px solid rgba(186, 206, 243, 1);
+  border-radius: 0.4rem;
   transition: all 0.15s;
 }
 

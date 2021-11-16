@@ -30,7 +30,7 @@ const Search = () => {
 
             {loading ? <p></p> :
                 error ? <p>{error}</p> :
-                    results.text === input && results.parsed === [] && results.hints === [] ? 'No results found. Try something else.' :
+                    results.hints === [] ? "No results found. Try something else." :
                     <div>
                         {results.hints.map((food) => (
                            <ResultsCard key={food.food.foodId} food={food}/>

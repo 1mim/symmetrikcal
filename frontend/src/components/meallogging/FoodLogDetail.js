@@ -40,11 +40,11 @@ const FoodLogDetail = () => {
     const submitFoodtoDb = (e) => {
         e.preventDefault();
         dispatch(logFood(foodItem))
-        console.log('Sent to DB')
     }
 
     useEffect(() => {
         if (success) {
+            alert("food added to log")
             dispatch({ type: LOG_FOOD_RESET });
         }
     }, [dispatch, success])
@@ -119,13 +119,13 @@ const FoodLogDetail = () => {
 
             <form onSubmit={updateValues} className="logDetail borderbottom">
                             <div className="result-content">
-                         <div><label>Serving Size(g)</label></div>
+                         <div><label className="serving">Serving Size(g)</label></div>
             <div className="logDetail-right"><input className="servingSize" onChange={updateServingSize} type="text" value={servingSize} placeholder={foodItem.servingSize === undefined ? "0" : foodItem.servingSize}></input></div>
            </div>
                         </form>
                         <div className="logDetail borderbottom">
                         <div className="result-content">
-                        <div>   <label> Meal Type </label></div>
+                        <div>   <label className="mealtype"> Meal Type </label></div>
               <div className="logDetail-right">  <select onChange={handleMealTypeSelection} className="mealType">
                 <option value="" disabled selected>Select</option>
                 <option value={snack}>Snack</option>
@@ -137,12 +137,12 @@ const FoodLogDetail = () => {
                             
                         <div className="logDetail borderbottom">
                         <div className="result-content">
-                        <div>   <label> Date </label></div>
+                        <div>   <label className="date"> Date </label></div>
                                     <div className="logDetail-right">
                                         <input type="date" onChange={handleDateSelect} className="dateSelect"/>
                             </div>
                       </div></div><br/>
-                      <button onClick={submitFoodtoDb} className="addToLog">Add To Log</button>
+                            <button onClick={submitFoodtoDb} className="addToLog">Add To Log</button>
                         </div>)}
             
         </div>
