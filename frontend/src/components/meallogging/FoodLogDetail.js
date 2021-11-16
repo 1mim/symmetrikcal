@@ -110,7 +110,7 @@ const FoodLogDetail = () => {
                             <div className="logDetail">
                             <div className="result-content">
                       <div>  <h2>{foodItem.name}</h2></div>
-                     <div className="logDetail-right">   <h2>{Math.round(foodItem.calories)}kcal</h2></div>
+                     <div className="logDetail-right">   <h2>{foodItem.calories === undefined ? "0" : Math.round(foodItem.calories)}kcal</h2></div>
                                 </div></div>
                             <div className='logDetail borderbottom'>
                                 <Bar data={data} options={options} height={110}/>
@@ -120,14 +120,15 @@ const FoodLogDetail = () => {
             <form onSubmit={updateValues} className="logDetail borderbottom">
                             <div className="result-content">
                          <div><label>Serving Size(g)</label></div>
-            <div className="logDetail-right"><input className="servingSize" onChange={updateServingSize} type="text" value={servingSize} placeholder={foodItem.servingSize}></input></div>
+            <div className="logDetail-right"><input className="servingSize" onChange={updateServingSize} type="text" value={servingSize} placeholder={foodItem.servingSize === undefined ? "0" : foodItem.servingSize}></input></div>
            </div>
                         </form>
                         <div className="logDetail borderbottom">
                         <div className="result-content">
                         <div>   <label> Meal Type </label></div>
               <div className="logDetail-right">  <select onChange={handleMealTypeSelection} className="mealType">
-                <option value={snack}>Snack</option>            
+                <option value="" disabled selected>Select</option>
+                <option value={snack}>Snack</option>
                 <option value={breakfast}>Breakfast</option>            
                 <option value={lunch}>Lunch</option>            
                 <option value={dinner}>Dinner</option>           

@@ -19,7 +19,7 @@ export const fetchFoodData = (input) => async (dispatch) => {
     }
 }
 
-export const setFoodDataToLog = (food) => async (dispatch) => {
+export const setFoodDataToLog = (food) => async (dispatch, getState) => {
     const data = food;
     let servingSize = 100;
     let mealType = 'snack'
@@ -36,9 +36,10 @@ export const setFoodDataToLog = (food) => async (dispatch) => {
             date: Date()
         }
     });
+    localStorage.setItem('foodItem', JSON.stringify(getState().foodItemData.foodItem))
 }
 
-export const updateFoodDataToLogValues = (id, qty) => async (dispatch) => {
+export const updateFoodDataToLogValues = (id, qty) => async (dispatch, getState) => {
     const data = id;
     let servingSize = qty / 100;
     // let prevQty = 1;
@@ -54,10 +55,11 @@ export const updateFoodDataToLogValues = (id, qty) => async (dispatch) => {
             mealType: data.mealType,
             date: data.date
         }
-    })
+    });
+    localStorage.setItem('foodItem', JSON.stringify(getState().foodItemData.foodItem))
 }
 
-export const setMealTypeSelection = (id, mealType) => async (dispatch) => {
+export const setMealTypeSelection = (id, mealType) => async (dispatch, getState) => {
     const data = id;
     dispatch({
         type: SET_FOOD_MEALTYPE,
@@ -71,10 +73,11 @@ export const setMealTypeSelection = (id, mealType) => async (dispatch) => {
             mealType: mealType,
             date: data.date
         }
-    })
+    });
+    localStorage.setItem('foodItem', JSON.stringify(getState().foodItemData.foodItem))
 }
 
-export const dateSelection = (id, dateSelected) => async (dispatch) => {
+export const dateSelection = (id, dateSelected) => async (dispatch, getState) => {
     const data = id;
     dispatch({
         type: SELECT_FOOD_DATE,
@@ -88,7 +91,8 @@ export const dateSelection = (id, dateSelected) => async (dispatch) => {
             mealType: data.mealType,
             date: dateSelected
         }
-    })
+    });
+    localStorage.setItem('foodItem', JSON.stringify(getState().foodItemData.foodItem))
 }
 
 export const logFood = (values) => async (dispatch, getState) => {
@@ -114,10 +118,6 @@ export const logFood = (values) => async (dispatch, getState) => {
                 date: data.date
             }
         });
-        dispatch({
-            type: LOG_FOOD_RESET,
-            payload: {}
-        })
         localStorage.removeItem('foodItem');
     } catch (error) {
         dispatch({

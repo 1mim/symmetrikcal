@@ -9,7 +9,7 @@ const initialState = {
     userLogin: {
         userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null,
     },
-    log: {
+    foodItemData: {
         foodItem: localStorage.getItem('foodItem') ? JSON.parse(localStorage.getItem('foodItem')) : {},
     }
 }

@@ -28,9 +28,11 @@ export const setFoodDataToLogReducer = (state = { foodItem: {} }, action) => {
         case UPDATE_FOOD_ITEM_VALUES:
             return { ...state, foodItem: action.payload };
         case SET_FOOD_MEALTYPE:
-            return { ...state, foodItem: action.payload }
+            return { ...state, foodItem: action.payload };
         case SELECT_FOOD_DATE:
-            return {...state, foodItem: action.payload}
+            return { ...state, foodItem: action.payload };
+        case LOG_FOOD_RESET:
+            return {foodItem: {}}
         default:
             return state;
     }
