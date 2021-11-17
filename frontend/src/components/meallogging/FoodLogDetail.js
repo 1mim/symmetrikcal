@@ -122,7 +122,7 @@ const FoodLogDetail = () => {
             <form onSubmit={updateValues} className="logDetail borderbottom">
                             <div className="result-content">
                          <div><label className="serving">Serving Size(g)</label></div>
-            <div className="logDetail-right"><input className="servingSize" onChange={updateServingSize} type="text" value={servingSize} placeholder={foodItem.servingSize === undefined ? "0" : foodItem.servingSize}></input></div>
+            <div className="logDetail-right"><input className="servingSize" onChange={updateServingSize} type="text" id="servingSize" placeholder={foodItem.servingSize === undefined ? "0" : foodItem.servingSize}></input></div>
            </div>
                         </form>
                         <div className="logDetail borderbottom">

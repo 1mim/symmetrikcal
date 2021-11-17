@@ -7,17 +7,19 @@ const SetMacrosScreen = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    // import two selectors:
-    // one to get the user by id to display name,
-    // the other to update the account data
+    
     const { userInfo } = useSelector(state => state.userLogin);
     const { loading, user, error } = useSelector(state => state.userAccountDetails);
-    const { success: successUpdate, error: errorUpdate, loading: loadingUpdate } = useSelector(state => state.updateUserAccount);
 
     const [targetKcal, setTargetKcal] = useState(0);
     const [targetCarbs, setTargetCarbs] = useState(0);
     const [targetProtein, setTargetProtein] = useState(0);
     const [targetFats, setTargetFats] = useState(0);
+
+    const capitalize = (s) => {
+        if (typeof s !== 'string') return ''
+        return s.charAt(0).toUpperCase() + s.slice(1)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,11 +27,6 @@ const SetMacrosScreen = () => {
         navigate('/set-weight', {replace: true})
     };
 
-    // useEffect(() => {
-    //     if (user || successUpdate) {
-    //         // navigate('/set-weight', {replace: true})
-    //     }
-    // }, [user, navigate, successUpdate])
 
     return (
         <div className='welcomecontain'>
@@ -39,7 +36,7 @@ const SetMacrosScreen = () => {
                 <div className='pleft'>
                         Welcomme to 
                         symmetri<em>kcal</em><br/>
-                        {user.name ? user.name.toUpperCase() : 'friend'}.<br/>
+                        { loading ? 'frined' : capitalize(userInfo.name)}.<br/>
                         Set your target macronutrients
                         and weight to get started.
                 </div>

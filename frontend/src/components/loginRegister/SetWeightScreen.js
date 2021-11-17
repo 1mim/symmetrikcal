@@ -12,23 +12,21 @@ const SetWeightScreen = () => {
     // the other to update the account data
     const { userInfo } = useSelector(state => state.userLogin);
     const { loading, user, error } = useSelector(state => state.userAccountDetails);
-    const { success: successUpdate, error: errorUpdate, loading: loadingUpdate } = useSelector(state => state.updateUserAccount);
 
     const [targetWeight, setTargetWeight] = useState(0);
     const [currentWeight, setCurrentWeight] = useState(0);
 
-   
+    const capitalize = (s) => {
+        if (typeof s !== 'string') return ''
+        return s.charAt(0).toUpperCase() + s.slice(1)
+    }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(updateUserInfo(userInfo.name, userInfo.email, userInfo.password, userInfo.targetKcal, userInfo.targetCarbs, userInfo.targetProtein, userInfo.targetFats, currentWeight, targetWeight))
         navigate('/newlog', {replace: true})
     };
 
-    // useEffect(() => {
-    //     if (successUpdate) {
-    //         navigate('/newlog', {replace: true})
-    //     }
-    // }, [navigate, successUpdate])
 
     return (
         <div className='welcomecontain'>
@@ -38,7 +36,7 @@ const SetWeightScreen = () => {
                 <div className='pleft'>
                         Welcomme to 
                         symmetri<em>kcal</em><br/>
-                        {user.name ? user.name.toUpperCase() : 'friend'}.<br/>
+                        { loading ? 'frined' : capitalize(userInfo.name)}.<br/>
                         Set your target macronutrients
                         and weight to get started.
                 </div>
