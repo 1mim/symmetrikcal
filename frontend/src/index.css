@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: "Sora", sans-serif;
@@ -62,12 +67,12 @@ input::-webkit-inner-spin-button {
   padding: 0rem;
   /* background-color: #101418; */
   background-color: #0a1016;
-  color: #e7ad99;
+  color: rgba(186, 206, 243, 1);
   width: 20%;
   position: fixed;
   left: 0;
   top: 0;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
   height: 100vh;
   justify-content: space-evenly;
 }
@@ -85,6 +90,41 @@ input::-webkit-inner-spin-button {
   transform: translate(-50%, -50%);
   margin-top: -2rem;
   text-align: left;
+}
+
+.navuser {
+  position: absolute;
+  bottom: 0;
+  text-align: left;
+  /* margin-bottom: 1rem; */
+  /* background: #3a3c40; */
+  width: 65%;
+  padding: 1.2rem 0rem 2rem 4rem;
+  margin-left: -22%;
+  border-top: 1px dotted #3a3c40;
+}
+
+.navuser-name {
+  font-weight: 600;
+}
+
+.navuser-info {
+  font-size: 0.65rem;
+  font-weight: normal;
+  letter-spacing: 0.03rem;
+}
+
+.navbar-logo {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  margin-top: 3rem;
 }
 
 /* for logging new food page */
@@ -288,6 +328,38 @@ button.addToLog {
 }
 
 button.addToLog:hover {
+  color: #0a1016;
+  background: linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+button.logout {
+  display: inline-block;
+  padding: 0.5em 2em;
+  font-size: 0.5rem;
+  margin-top: 0.5rem;
+  /* width: 15rem; */
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Sora", sans-serif;
+  letter-spacing: 0.05rem;
+  font-weight: 500;
+  color: #f7e8de;
+  background: none;
+  border: 1px solid rgba(186, 206, 243, 1);
+  border-radius: 2rem;
+  transition: all 0.15s;
+}
+
+button.logout:hover {
   color: #0a1016;
   background: linear-gradient(
     45deg,

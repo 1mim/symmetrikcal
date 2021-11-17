@@ -21,22 +21,24 @@ const SideNavbar = () => {
 
     return (
         <div>
-            <div><h3>symmetri<em>kcal</em></h3></div>
+            <div className='navbar-logo'>symmetri<em>kcal</em></div>
             {/* <div><h3><em>kcal</em></h3></div> */}
             <div className='navbarlinks'>
-                <NavLink className={(navData) => navData.isActive ? 'navbarlinks.active' : ''} to='/home'><div>Overview</div></NavLink>
+                <NavLink className={(navData) => navData.isActive ? 'navbarlinks.active' : ''} to='/home'><div>Dashboard</div></NavLink>
                 <NavLink to='/diary'><div>Diary</div></NavLink>
                 <NavLink to='/newlog'><div>New Log</div></NavLink>
-                <NavLink to='/loghistory'><div>History</div></NavLink>
-                <NavLink to='/myaccount/:id'><div>Profile</div></NavLink>
-                <button className='login2' onClick={handleLogout}>logout</button>
+                <NavLink to='/loghistory'><div>Log History</div></NavLink>
+                <NavLink to='/myaccount/:id'><div>Settings</div></NavLink>
             </div>
-
+        
+            <div className="navuser">
             {loading ?
                 <div>loading..</div> :
-                <div>{capitalize(userInfo.name)}<br />
-                    {userInfo.targetKcal}kcal | {userInfo.currentWeight}kg</div>}
-            {/* <div> <button className='login2' onClick={handleLogout}>logout</button></div> */}
+                <div className="navuser-name">{capitalize(userInfo.name)}<br />
+                   <div className="navuser-info"> {userInfo.targetKcal}kcal | {userInfo.currentWeight}kg</div></div>}
+                   <button className='logout' onClick={handleLogout}>logout</button>
+            </div>
+        
         </div>
     )
 }

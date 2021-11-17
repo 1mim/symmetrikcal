@@ -38,10 +38,6 @@ const RegisterScreen = () => {
         
         }
     }
-    
-    const handleLogout = () => {
-        dispatch(logout())
-    }
          
     // useEffect(() => {
     //     if (!userInfo === {}) {
@@ -60,7 +56,6 @@ const RegisterScreen = () => {
                         Find food in our extensive collection.
                     Log meals. Monitor your progress.
                         symmetri<em>kcal</em>
-                        <button className='login2' onClick={handleLogout}>logout</button>
                 </div>
             </div>
 

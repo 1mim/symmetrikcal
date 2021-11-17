@@ -20,7 +20,7 @@ const SetWeightScreen = () => {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(updateUserInfo(userInfo.name, userInfo.email, userInfo.password, userInfo.targetKcal, userInfo.targetCarbs, userInfo.targetProtein, userInfo.targetFats, currentWeight, targetWeight))
@@ -35,8 +35,9 @@ const SetWeightScreen = () => {
             <div className='formleft'>
                 <div className='pleft'>
                         Welcomme to 
-                        symmetri<em>kcal</em><br/>
-                        { loading ? 'frined' : capitalize(userInfo.name)}.<br/>
+                        symmetri<em>kcal</em>.<br/>
+                        {/* {loading ? 'frined' : capitalize(userInfo.name)}. */}
+                        <br />
                         Set your target macronutrients
                         and weight to get started.
                 </div>
