@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { dateSelection, logFood, setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
 import { Bar } from 'react-chartjs-2';
+// import Select from "react-select";
 // import { LOG_FOOD_RESET } from '../redux/constants/foodLogConstants';
 
 
 const FoodLogDetail = () => {
     const dispatch = useDispatch()
-    const { loading, error, foodItem } = useSelector(state => state.foodItemData)
+    const { loading, error, foodItem } = useSelector(state => state.foodItemData);
 
     const [servingSize, setServingSize] = useState(foodItem.servingSize);
     const updateServingSize = (e) => {
@@ -34,18 +35,27 @@ const FoodLogDetail = () => {
         dispatch(dateSelection(foodItem, e.target.value))
     }
 
+    //function to reset the fields
+
+  const resetInputFields = () => {
+    setServingSize('');
+    // setValue(null);
+    
+  }
+
     //logging food to database!
     const { success, foodLog } = useSelector(state => state.logFoodtoDb)
    
     const submitFoodtoDb = (e) => {
         e.preventDefault();
-      dispatch(logFood(foodItem))
-      alert("food added to log")
+      dispatch(logFood(foodItem));
+      alert("food added to log");
+      resetInputFields();
       
     }
 
     // useEffect(() => {
-    //     if () {
+    //     if (success) {
     //         alert("food added to log")
     //         // dispatch({ type: LOG_FOOD_RESET });
     //     }
@@ -128,13 +138,15 @@ const FoodLogDetail = () => {
                         <div className="logDetail borderbottom">
                         <div className="result-content">
                         <div>   <label className="mealtype"> Meal Type </label></div>
-              <div className="logDetail-right">  <select onChange={handleMealTypeSelection} className="mealType">
+                    <div className="logDetail-right">
+                <select onChange={handleMealTypeSelection} className="mealType">
                 <option value="" disabled selected>Select</option>
                 <option value={snack}>Snack</option>
                 <option value={breakfast}>Breakfast</option>            
                 <option value={lunch}>Lunch</option>            
                 <option value={dinner}>Dinner</option>           
-                            </select> </div>
+                  </select>
+                    </div>
                                 </div></div>
                             
                         <div className="logDetail borderbottom">

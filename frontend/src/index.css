@@ -125,6 +125,7 @@ input::-webkit-inner-spin-button {
   -webkit-text-fill-color: transparent;
   font-weight: 800;
   margin-top: 3rem;
+  width: 100%;
 }
 
 /* for logging new food page */

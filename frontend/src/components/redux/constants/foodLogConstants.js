@@ -16,7 +16,12 @@ export const SET_FOOD_MEALTYPE = 'SET_FOOD_MEALTYPE';
 export const SELECT_FOOD_DATE = 'SELECT_FOOD_DATE';
 
 //logging food to backend after setting all the states
-export const LOG_FOOD_REQUEST = 'LOG_FOOD_REQUEST'
-export const LOG_FOOD_SUCCESS = 'LOG_FOOD_SUCCESS'
-export const LOG_FOOD_FAIL = 'LOG_FOOD_FAIL'
-export const LOG_FOOD_RESET = 'LOG_FOOD_RESET'
+export const LOG_FOOD_REQUEST = 'LOG_FOOD_REQUEST';
+export const LOG_FOOD_SUCCESS = 'LOG_FOOD_SUCCESS';
+export const LOG_FOOD_FAIL = 'LOG_FOOD_FAIL';
+export const LOG_FOOD_RESET = 'LOG_FOOD_RESET';
+
+//get meal log data from backend
+export const GET_FOOD_DATA_REQUEST = 'GET_FOOD_DATA_REQUEST';
+export const GET_FOOD_DATA_SUCCESS = 'GET_FOOD_DATA_SUCCESS';
+export const GET_FOOD_DATA_FAIL = 'GET_FOOD_DATA_FAIL';

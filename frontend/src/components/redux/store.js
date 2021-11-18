@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { fetchFoodDataReducer, logFoodToDbReducer, setFoodDataToLogReducer } from "./reducers/foodLogReducers";
+import { fetchFoodDataReducer, getMealLogsFromDbReducer, logFoodToDbReducer, setFoodDataToLogReducer } from "./reducers/foodLogReducers";
 import { userLoginReducer, userRegisterReducer, updateUserAccountReducer, userAccountDetailsReducer } from "./reducers/userReducers";
 
 const initialState = {
@@ -23,6 +23,7 @@ const reducer = combineReducers({
     logFoodtoDb: logFoodToDbReducer,
     updateUserAccount: updateUserAccountReducer,
     userAccountDetails: userAccountDetailsReducer,
+    getMealLogsFromDb: getMealLogsFromDbReducer,
 });
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));

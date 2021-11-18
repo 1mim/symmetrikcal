@@ -1,0 +1,177 @@
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+  width: 55rem;
+  /* margin-left: -1rem; */
+}
+
+.react-tabs__tab-list {
+  /* border-bottom: 1px solid #aaa; */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  display: inline-grid;
+  background: #0a1016;
+  /* margin: 0rem 1rem; */
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  width: 97.5%;
+}
+
+.react-tabs__tab {
+  text-transform: uppercase;
+  font-family: "Sora", sans-serif;
+  letter-spacing: 0.03rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  /* color: #f7e8de; */
+  color: #f7e8de1a;
+  /* color: #12171d; */
+  background: none;
+  /* border: 2px solid rgba(186, 206, 243, 1); */
+  /* background: #0f1318; */
+  border-radius: 0.4rem;
+  transition: all 0.15s;
+  border-radius: 0.3rem;
+  /* bottom: -1px; */
+  position: relative;
+  align-items: center;
+  list-style: none;
+  padding: 0.7rem 1.6rem;
+  cursor: pointer;
+  /* width: 100%; */
+}
+
+.react-tabs__tab--selected {
+  text-transform: uppercase;
+  font-family: "Sora", sans-serif;
+  letter-spacing: 0.03rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: none;
+  color: #0a1016;
+  background: linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  border-radius: 1rem;
+  transition: all 0.15s;
+  border-radius: 0.3rem;
+}
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  /* box-shadow: 0 0 5px hsl(208, 99%, 50%); */
+  /* border-color: hsl(208, 99%, 50%); */
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: "";
+  /* position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff; */
+}
+
+.react-tabs__tab-panel {
+  display: flex;
+  margin-top: 2rem;
+  list-style: none;
+  gap: 2rem;
+  position: absolute;
+  justify-content: space-evenly;
+  width: 55rem;
+}
+
+.react-tabs__tab-panel--selected {
+  display: flex;
+  margin-top: 2rem;
+  list-style: none;
+  gap: 2rem;
+  position: absolute;
+  justify-content: space-evenly;
+  width: 55rem;
+}
+
+.content-left {
+  /* background: #0a1016; */
+  width: 75%;
+  margin: 0rem -3rem;
+  /* border-radius: 0.5rem; */
+  /* margin: 1rem 3rem; */
+}
+
+.content-right {
+  background: #0a1016;
+  width: 25%;
+  height: max-content;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: left;
+  /* margin-left: -3%; */
+  /* margin: 1rem 3rem; */
+}
+
+.overview-content {
+  grid-template-columns: 2fr 1fr;
+  display: inline-grid;
+  align-items: center;
+  /* margin: 0 0 0 5em; */
+  /* justify-content:space-evenly; */
+  flex-grow: 1;
+  /* background-color: lavender; */
+}
+
+.macrosvalue {
+  text-align: right;
+}
+
+label.macros {
+  font-size: 0.8rem;
+  color: rgba(251, 209, 233, 1);
+}
+
+.dateday {
+  font-size: 0.8rem;
+  color: rgba(251, 209, 233, 1);
+  margin-bottom: 0.5rem;
+}
+
+.foodlog-card {
+  border-radius: 0.5rem;
+  background-color: #0a1016;
+  max-width: 100%;
+  /* height: 30px; */
+  padding: 1em 1.5em 1em 1.5em;
+  margin: 1rem 1.5rem 1rem 3rem;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.card-values {
+  font-size: 0.8rem;
+}
+
+.card-macros-label {
+  font-size: 0.6rem;
+  color: rgba(251, 209, 233, 1);
+}
+
+.foodlog-content {
+  grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
+  display: inline-grid;
+  align-items: center;
+  /* margin: 0 0 0 5em; */
+  /* justify-content:space-evenly; */
+  flex-grow: 1;
+  /* background-color: lavender; */
+}
