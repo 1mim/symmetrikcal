@@ -267,10 +267,11 @@ select.mealType {
 
 .detailContain {
   background-color: #0a1016;
+  border: 1px solid rgba(186, 206, 243, 1);
   border-radius: 1rem;
   /* max-width: 100%;
   min-height: 100%; */
-  padding: 0.4rem 2rem 2rem 2rem;
+  padding: 1rem 2rem 2rem 2rem;
   margin: 1rem 3rem;
   /* display: flex;
   align-items: center; */

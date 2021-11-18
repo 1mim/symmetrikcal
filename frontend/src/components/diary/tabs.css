@@ -82,9 +82,9 @@
 
 .react-tabs__tab-panel {
   display: flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
   list-style: none;
-  gap: 2rem;
+  gap: 3rem;
   position: absolute;
   justify-content: space-evenly;
   width: 55rem;
@@ -92,9 +92,9 @@
 
 .react-tabs__tab-panel--selected {
   display: flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
   list-style: none;
-  gap: 2rem;
+  gap: 3rem;
   position: absolute;
   justify-content: space-evenly;
   width: 55rem;
@@ -113,16 +113,22 @@
   width: 25%;
   height: max-content;
   padding: 1.5rem;
+  padding-top: 2rem;
   border-radius: 0.5rem;
   text-align: left;
+  border: 1px solid rgba(186, 206, 243, 1);
+  margin-top: 1rem;
   /* margin-left: -3%; */
   /* margin: 1rem 3rem; */
 }
 
 .overview-content {
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   display: inline-grid;
   align-items: center;
+  border-top: 1px dotted #f7e8de1a;
+  padding: 0.7rem 0rem;
+  width: 100%;
   /* margin: 0 0 0 5em; */
   /* justify-content:space-evenly; */
   flex-grow: 1;
@@ -131,17 +137,40 @@
 
 .macrosvalue {
   text-align: right;
+  font-weight: bold;
 }
 
 label.macros {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: rgba(251, 209, 233, 1);
 }
 
-.dateday {
-  font-size: 0.8rem;
+label.macros-kcal {
+  font-size: 0.75rem;
   color: rgba(251, 209, 233, 1);
-  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.dateday {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.3rem 0rem 1rem 0rem;
+}
+
+.mealname {
+  color: rgba(251, 209, 233, 1);
+  letter-spacing: 0.05rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: lighter;
 }
 
 .foodlog-card {
@@ -163,11 +192,11 @@ label.macros {
 
 .card-macros-label {
   font-size: 0.6rem;
-  color: rgba(251, 209, 233, 1);
+  color: rgba(186, 206, 243, 1);
 }
 
 .foodlog-content {
-  grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
   display: inline-grid;
   align-items: center;
   /* margin: 0 0 0 5em; */

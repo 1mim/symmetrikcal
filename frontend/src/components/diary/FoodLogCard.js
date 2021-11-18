@@ -22,7 +22,6 @@ const FoodLogCard = ({log, round2Digits}) => {
                 </div>
 
             <div className="result-content-kcal">{Math.round(log.calories)}kcal
-                {/* <button onClick={selectFood}>select</button> */}
             </div>
             </div>
     </div>
