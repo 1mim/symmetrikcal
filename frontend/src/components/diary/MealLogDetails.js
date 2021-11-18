@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { getMealLogs } from '../redux/actions/foodLogActions';
+import { filterBreakfast, filterDinner, filterLunch, filterSnack, getTodayMealLogs } from '../redux/actions/foodLogActions';
 import FoodLogCard from './FoodLogCard';
 import MealLogOverview from './MealLogOverview';
 import "./tabs.css"
@@ -9,42 +9,27 @@ import "./tabs.css"
 const MealLogDetails = () => {
     
     const dispatch = useDispatch()
-    const { logs, loading, error } = useSelector(state => state.getMealLogsFromDb);
+    const { todayLogs, loading, error } = useSelector(state => state.getTodayMeals);
+    const { breakfast, lunch, dinner, snack } = useSelector(state => state.filterByMealTypes);
    
     //filtering by today's date
     const moment = require("moment");
     const today = moment().format("dddd MMMM Do YYYY");
 
-    const [todayMealLogs, setTodayMealLogs] = useState([])
-
     //first useEffect to get the data from backend
     useEffect(() => {
-        dispatch(getMealLogs());
+        dispatch(getTodayMealLogs())
     }, [dispatch])
 
-    //second useEffect to filter the data fetched
+     //second useEffect to filter the data fetched
     useEffect(() => {
-        if (logs) {
-
-            const interval = setInterval(() => {
-                setTodayMealLogs(logs.filter((element) => moment(element.date).format("dddd MMMM Do YYYY") === today));
-            }, 1000)
-
-            return () => clearInterval(interval)
+        if(todayLogs){
+        dispatch(filterBreakfast(todayLogs));
+        dispatch(filterLunch(todayLogs));
+        dispatch(filterDinner(todayLogs));
+        dispatch(filterSnack(todayLogs));
         }
-    }, [logs, moment, today])
-
-  //getting breakfast data
-    const breakfast = todayMealLogs.filter((ele) => ele.mealType === "breakfast");
-
-  //getting lunch data
-    const lunch = todayMealLogs.filter((ele) => ele.mealType === "lunch");
-
-  //getting dinner data
-    const dinner = todayMealLogs.filter((ele) => ele.mealType === "dinner");
-
-  //getting snack data
-    const snack = todayMealLogs.filter((ele) => ele.mealType === "snack");
+    }, [dispatch, todayLogs])
 
     //function to round to 2 decimal places
     const round2Digits = (value) => {

@@ -21,7 +21,18 @@ export const LOG_FOOD_SUCCESS = 'LOG_FOOD_SUCCESS';
 export const LOG_FOOD_FAIL = 'LOG_FOOD_FAIL';
 export const LOG_FOOD_RESET = 'LOG_FOOD_RESET';
 
-//get meal log data from backend
+//get all meal logs data from backend
 export const GET_FOOD_DATA_REQUEST = 'GET_FOOD_DATA_REQUEST';
 export const GET_FOOD_DATA_SUCCESS = 'GET_FOOD_DATA_SUCCESS';
 export const GET_FOOD_DATA_FAIL = 'GET_FOOD_DATA_FAIL';
+
+//get todays meal logs data from backend
+export const GET_TODAY_DATA_REQUEST = 'GET_TODAY_DATA_REQUEST';
+export const GET_TODAY_DATA_SUCCESS = 'GET_TODAY_DATA_SUCCESS';
+export const GET_TODAY_DATA_FAIL = 'GET_TODAY_DATA_FAIL';
+
+//filter by meal types
+export const FILTER_BREAKFAST = 'FILTER_BREAKFAST';
+export const FILTER_LUNCH = 'FILTER_LUNCH';
+export const FILTER_DINNER = 'FILTER_DINNER';
+export const FILTER_SNACK = 'FILTER_SNACK';

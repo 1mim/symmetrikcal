@@ -21,6 +21,11 @@ const FoodLogCard = ({log, round2Digits}) => {
                     <div className="card-values">{round2Digits(log.fats)}g</div>
                 </div>
 
+                <div>
+                <div className="card-macros-label">Serving</div>
+                    <div className="card-values">{round2Digits(log.servingSize)}g</div>
+                </div>
+
             <div className="result-content-kcal">{Math.round(log.calories)}kcal
             </div>
             </div>

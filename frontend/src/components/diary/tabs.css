@@ -196,7 +196,7 @@ label.macros-kcal {
 }
 
 .foodlog-content {
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
   display: inline-grid;
   align-items: center;
   /* margin: 0 0 0 5em; */

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, GET_FOOD_DATA_FAIL, GET_FOOD_DATA_REQUEST, GET_FOOD_DATA_SUCCESS, LOG_FOOD_FAIL, LOG_FOOD_REQUEST, LOG_FOOD_RESET, LOG_FOOD_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants"
+import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, FILTER_BREAKFAST, FILTER_DINNER, FILTER_LUNCH, FILTER_SNACK, GET_FOOD_DATA_FAIL, GET_FOOD_DATA_REQUEST, GET_FOOD_DATA_SUCCESS, GET_TODAY_DATA_FAIL, GET_TODAY_DATA_REQUEST, GET_TODAY_DATA_SUCCESS, LOG_FOOD_FAIL, LOG_FOOD_REQUEST, LOG_FOOD_RESET, LOG_FOOD_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants"
 
 export const fetchFoodData = (input) => async (dispatch) => {
     dispatch({
@@ -95,6 +95,7 @@ export const dateSelection = (id, dateSelected) => async (dispatch, getState) =>
     localStorage.setItem('foodItem', JSON.stringify(getState().foodItemData.foodItem))
 }
 
+//logging food
 export const logFood = (values) => async (dispatch, getState) => {
     dispatch({ type: LOG_FOOD_REQUEST, payload: values });
     try {
@@ -131,6 +132,7 @@ export const logFood = (values) => async (dispatch, getState) => {
     }
 };
 
+//getting all meals from user
 export const getMealLogs = () => async (dispatch, getState) => {
     dispatch({ type: GET_FOOD_DATA_REQUEST });
     const { userLogin: { userInfo } } = getState();
@@ -148,4 +150,64 @@ export const getMealLogs = () => async (dispatch, getState) => {
                 : error.message;
         dispatch({ type: GET_FOOD_DATA_FAIL, payload: message });
     }
+}
+
+//getting today's meals only 
+export const getTodayMealLogs = () => async (dispatch, getState) => {
+
+    const moment = require("moment");
+    const today = moment().format("dddd MMMM Do YYYY");
+
+    dispatch({ type: GET_TODAY_DATA_REQUEST });
+    const { userLogin: { userInfo } } = getState();
+    try {
+        const { data } = await axios.get('/log/list', {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        });
+        dispatch({
+            type: GET_TODAY_DATA_SUCCESS,
+            payload: data.filter((element) => moment(element.date).format("dddd MMMM Do YYYY") === today)
+        });
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message;
+        dispatch({ type: GET_TODAY_DATA_FAIL, payload: message });
+    }
+}
+
+//filtering by mealtypes
+export const filterBreakfast = (data) => async (dispatch) => {
+    // const { data } = await data;
+    dispatch({
+        type: FILTER_BREAKFAST,
+        payload: data.filter((ele) => ele.mealType === "breakfast"),
+    });
+}
+
+export const filterLunch = (data) => async (dispatch) => {
+    // const { data } = await data;
+    dispatch({
+        type: FILTER_LUNCH,
+        payload: data.filter((ele) => ele.mealType === "lunch"),
+    });
+}
+
+export const filterDinner = (data) => async (dispatch) => {
+    // const { data } = await data;
+    dispatch({
+        type: FILTER_DINNER,
+        payload: data.filter((ele) => ele.mealType === "dinner")
+    });
+}
+
+export const filterSnack = (data) => async (dispatch) => {
+    // const { data } = await data;
+    dispatch({
+        type: FILTER_SNACK,
+        payload: data.filter((ele) => ele.mealType === "snack")
+    });
 }
