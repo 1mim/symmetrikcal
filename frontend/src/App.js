@@ -7,6 +7,7 @@ import FoodLogScreen from './components/meallogging/FoodLogScreen';
 import SetMacrosScreen from './components/loginRegister/SetMacrosScreen';
 import SetWeightScreen from './components/loginRegister/SetWeightScreen';
 import DiaryScreen from './components/diary/DiaryScreen';
+import DashboardScreen from './components/dashboard/DashboardScreen';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/set-weight' element={<SetWeightScreen />}/>
         <Route path='/newlog' element={<FoodLogScreen />}/>
         <Route path='/diary' element={<DiaryScreen />}/>
+        <Route path='/main' element={<DashboardScreen />}/>
     </Routes>
       </div>
       </main>

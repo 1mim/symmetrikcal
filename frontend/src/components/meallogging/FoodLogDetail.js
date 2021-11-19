@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { dateSelection, logFood, setMealTypeSelection, updateFoodDataToLogValues } from '../redux/actions/foodLogActions';
 import { Bar } from 'react-chartjs-2';
@@ -44,7 +44,7 @@ const FoodLogDetail = () => {
   }
 
     //logging food to database!
-    const { success, foodLog } = useSelector(state => state.logFoodtoDb)
+    // const { success, foodLog } = useSelector(state => state.logFoodtoDb)
    
     const submitFoodtoDb = (e) => {
         e.preventDefault();
@@ -90,7 +90,7 @@ const FoodLogDetail = () => {
         indexAxis: 'y',
         // Elements options apply to all of the options unless overridden in a dataset
         // In this case, we are setting the border of each horizontal bar to be 2px wide
-        maintainAspectRation: false,
+        maintainAspectRatio: true,
         elements: {
           bar: {
             borderWidth: 2,

@@ -24,7 +24,7 @@ const SideNavbar = () => {
             <div className='navbar-logo'>symmetri<em>kcal</em></div>
             {/* <div><h3><em>kcal</em></h3></div> */}
             <div className='navbarlinks'>
-                <NavLink className={(navData) => navData.isActive ? 'navbarlinks.active' : ''} to='/home'><div>Dashboard</div></NavLink>
+                <NavLink className={(navData) => navData.isActive ? 'navbarlinks.active' : ''} to='/main'><div>Dashboard</div></NavLink>
                 <NavLink to='/diary'><div>Diary</div></NavLink>
                 <NavLink to='/newlog'><div>New Log</div></NavLink>
                 <NavLink to='/loghistory'><div>Log History</div></NavLink>

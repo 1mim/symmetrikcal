@@ -48,50 +48,50 @@ const MealLogDetails = () => {
       <Tab>Snack</Tab>
     </TabList>
                 
-                            <TabPanel>
-                            <div className='content-left'>
-                                {breakfast.map((log) => (
-                                    <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
-                                ))}
-                            </div>
-                            <div className='content-right'>
-                                <MealLogOverview round2Digits={round2Digits} meal={breakfast} today={today} mealname={'Breakfast'}/>
-                            </div>
+            <TabPanel>
+            <div className='content-left'>
+                {breakfast.map((log) => (
+                    <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
+                ))}
+            </div>
+            <div className='content-right'>
+                <MealLogOverview round2Digits={round2Digits} meal={breakfast} today={today} mealname={'Breakfast'}/>
+            </div>
                             
             </TabPanel>
                         
-            <TabPanel>
-            <div className='content-left'>
-                                {lunch.map((log) => (
-                                    <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
-                                ))}
-                            </div>
-                            <div className='content-right'>
-                                <MealLogOverview round2Digits={round2Digits} meal={lunch} today={today} mealname={'Lunch'}/>
-                            </div>
-                        </TabPanel>
+                    <TabPanel>
+                    <div className='content-left'>
+                            {lunch.map((log) => (
+                                <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
+                            ))}
+                        </div>
+                        <div className='content-right'>
+                            <MealLogOverview round2Digits={round2Digits} meal={lunch} today={today} mealname={'Lunch'}/>
+                        </div>
+                    </TabPanel>
                         
             <TabPanel>
             <div className='content-left'>
-                                {dinner.map((log) => (
-                                    <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
-                                ))}
-                            </div>
-                            <div className='content-right'>
-                                <MealLogOverview round2Digits={round2Digits} meal={dinner} today={today} mealname={'Dinner'}/>
-                            </div>
-                        </TabPanel>
+                    {dinner.map((log) => (
+                        <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
+                    ))}
+                </div>
+                <div className='content-right'>
+                    <MealLogOverview round2Digits={round2Digits} meal={dinner} today={today} mealname={'Dinner'}/>
+                </div>
+            </TabPanel>
                         
-            <TabPanel>
-            <div className='content-left'>
-                                {snack.map((log) => (
-                                    <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
-                                ))}
-                            </div>
-                            <div className='content-right'>
-                                <MealLogOverview round2Digits={round2Digits} meal={snack} today={today} mealname={'Snack'}/>
-                            </div>
-            </TabPanel>   
+                    <TabPanel>
+                    <div className='content-left'>
+                        {snack.map((log) => (
+                            <FoodLogCard key={log._Id} log={log} round2Digits={round2Digits}/>
+                        ))}
+                    </div>
+                    <div className='content-right'>
+                        <MealLogOverview round2Digits={round2Digits} meal={snack} today={today} mealname={'Snack'}/>
+                    </div>
+                    </TabPanel>   
         
    
                     </Tabs>

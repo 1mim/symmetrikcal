@@ -32,15 +32,19 @@ const SetMacrosScreen = () => {
         <div className='welcomecontain'>
         <div className='loginform'>
 
-            <div className='formleft'>
-                <div className='pleft'>
-                        Welcomme to 
-                        symmetri<em>kcal</em>.<br/>
-                        {/* {loading ? 'frined' : capitalize(userInfo.name)}. */}
-                        <br />
-                        Set your target macronutrients
-                        and weight to get started.
-                </div>
+                <div className='formleft'>
+                    {loading ? 'loading...' :
+                        error ? { error } :
+                            (
+                                <div className='pleft'>
+                        
+                                    Welcomme to
+                                    symmetri<em>kcal</em>.<br />
+                                    {capitalize(userInfo.name)}.
+                                    <br />
+                                    Set your target macronutrients
+                                    and weight to get started.
+                                </div>)}
             </div>
 
             <div className='formright'>
