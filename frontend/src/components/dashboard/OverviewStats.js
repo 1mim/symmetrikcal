@@ -133,7 +133,8 @@ const OverviewStats = ({todayLogs, targetKcal, userInfo, round2Digits}) => {
             <Doughnut data={data} height={10} options={options}  />
 
             <div className="floating-number">
-                <h2>{kcalLeft}kcal</h2>
+                <div>Total Calories:</div>
+                <h2>{totalKcal}kcal</h2>
                 <div className="outof">/ {targetKcal}kcal</div>
             </div>
 

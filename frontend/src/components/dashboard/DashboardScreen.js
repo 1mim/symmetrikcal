@@ -5,6 +5,7 @@ import SideNavbar from '../SideNavbar';
 import DashboardMealLogSection from './DashboardMealLogSection';
 import './dashboardstyle.css'
 import OverviewStats from './OverviewStats';
+import WeightWatcher from './WeightWatcher';
 
 
 
@@ -66,8 +67,8 @@ const DashboardScreen = () => {
                                     <DashboardMealLogSection todayLogs={todayLogs} round2Digits={round2Digits}/>
                     </div>
 
-                    <div className="dashboard-weight">
-                        weight watcher kiap to 3fr by 2fr
+                    <div>
+                                    <WeightWatcher userInfo={userInfo}/>
                     </div>
 
                 </div>

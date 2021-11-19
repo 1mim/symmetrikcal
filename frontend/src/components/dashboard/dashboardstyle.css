@@ -32,7 +32,7 @@
 
 .dashboard-overview {
   background-color: #0a1016;
-  border: 1px solid rgba(186, 206, 243, 1);
+  /* border: 1px solid rgba(186, 206, 243, 1); */
   border-radius: 0.7rem;
   /* max-width: 100%;
     min-height: 100%; */
@@ -146,4 +146,49 @@ h2 {
 .card-dash-macros-label {
   font-size: 0.6rem;
   color: rgba(186, 206, 243, 1);
+}
+
+.dashboard-weight {
+  grid-template-columns: 3fr 1fr;
+  gap: 1rem 1rem;
+  display: inline-grid;
+  margin-top: 2rem;
+  height: 9.7rem;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 92%;
+  background: #0a1016;
+  padding: 0.5rem 1.2rem 1.2rem 1.2rem;
+  border-radius: 0.7rem;
+  text-align: left;
+}
+
+.dash-weightvalue {
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgb(67, 79, 102) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.weight-card {
+  /* background: rgba(186, 206, 243, 0.1); */
+  border: 1px solid rgba(186, 206, 243, 0.1);
+  border-radius: 0.3rem;
+  padding: 0.7rem 0rem 0.7rem 0.7rem;
+  margin: 1rem 0rem;
+}
+
+.weightname {
+  /* color: rgba(251, 209, 233, 1); */
+  color: rgba(186, 206, 243, 1);
+  letter-spacing: 0.05rem;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  /* font-weight: lighter; */
 }
