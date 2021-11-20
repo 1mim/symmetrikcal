@@ -2,7 +2,7 @@ import React from 'react'
 
 const LogCard = ({moment, round2Digits, meal, date}) => {
     return (
-        <div className="dashboard-meallog-card">
+        <div className="history-log-card">
         <div className="border-right">
                 {/* <div className="mealname">{date}</div> */}
                 <div className="mealname">{(moment(date).format("ddd, MMM D YYYY"))}</div>

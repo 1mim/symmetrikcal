@@ -231,7 +231,7 @@ export const groupByDate = () => async (dispatch, getState) => {
             payload: Array.from(data.reduce(
                 (entryMap, e) => entryMap.set(moment(e.date).format("dddd MMMM Do YYYY"), [...entryMap.get(moment(e.date).format("dddd MMMM Do YYYY"))||[], e]),
             new Map()
-            ).values())
+            ).values()).reverse()
         });
     } catch (error) {
         const message =

@@ -4,6 +4,7 @@ import LogCard from './LogCard'
 import './history.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMealLogs, groupByDate } from '../redux/actions/foodLogActions'
+import LogHistoryChart from './LogHistoryChart'
 
 const LogHistoryScreen = () => {
 
@@ -26,17 +27,22 @@ const LogHistoryScreen = () => {
              <div className="navbar-container">
         <SideNavbar />
         </div>
-            {/* {loading ? 'loading...' :
-                error ? { error } :
-                    ( */}
+            
             <div className="dashboard-page-container">
                 <div className="history-left-container">
-
+                    {loading ? 'loading...' :
+                        error ? { error } : (
+                            // mealLogs.map((meal) => (
+                            // <LogHistoryChart key={meal._id} meal={meal} round2Digits={round2Digits} moment={moment} date={meal[0].date}/>)
+                          
+                            <LogHistoryChart meal={mealLogs} round2Digits={round2Digits} moment={moment}/>
+                            )
+                    }
                 </div>
                     
                     
                             <div className="history-right-container">
-                               
+                               <div className="loghistory-title">Log History</div>
                            {loading ? 'loading...' :
                 error ? { error } :
                     (mealLogs.map((meal) => (
@@ -44,7 +50,7 @@ const LogHistoryScreen = () => {
                                 ))}
                 </div>
             </div>
-            {/* )} */}
+           
         </div>
     )
 }

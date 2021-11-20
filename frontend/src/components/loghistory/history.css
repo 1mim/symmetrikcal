@@ -1,19 +1,51 @@
 .history-left-container {
   /* display: flex; */
-  position: relative;
-  width: 70%;
-  margin: 0rem 2rem 0rem 3rem;
+  position: static;
+  width: 65%;
+  height: max-content;
+  margin: 3rem 2rem 0rem 3rem;
   background-color: #0a1016;
   border-radius: 0.7rem;
   padding: 2rem 1rem 2rem 1rem;
   align-items: center;
+  overscroll-behavior-y: none;
 }
 
 .history-right-container {
   /* display: flex; */
-  position: relative;
-  width: 30%;
-  margin: 0rem 3rem 0rem 0rem;
+  /* position: relative; */
+  width: 35%;
+  margin: 3rem 3rem 0rem 0rem;
+  gap: 1rem 0rem;
   /* margin-left: -3%; */
   /* margin: 1rem 3rem; */
+}
+
+.history-log-card {
+  background: #0a1016;
+  grid-template-columns: 2fr 1fr;
+  display: inline-grid;
+  margin: 0rem 0rem 1rem 0rem;
+  padding: 1.2rem;
+  border-radius: 0.7rem;
+  align-items: center;
+  /* height: 100%; */
+  text-align: left;
+  width: 90%;
+}
+
+.loghistory-title {
+  font-size: 1.2rem;
+  /* text-align: left; */
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(251, 209, 233, 1) 9%,
+    rgba(186, 206, 243, 1) 51%,
+    rgba(255, 223, 183, 1) 94%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
 }
