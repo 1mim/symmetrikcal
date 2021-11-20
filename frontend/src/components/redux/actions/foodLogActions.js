@@ -1,5 +1,5 @@
 import axios from "axios"
-import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, FILTER_BREAKFAST, FILTER_DINNER, FILTER_LUNCH, FILTER_SNACK, GET_FOOD_DATA_FAIL, GET_FOOD_DATA_REQUEST, GET_FOOD_DATA_SUCCESS, GET_TODAY_DATA_FAIL, GET_TODAY_DATA_REQUEST, GET_TODAY_DATA_SUCCESS, LOG_FOOD_FAIL, LOG_FOOD_REQUEST, LOG_FOOD_RESET, LOG_FOOD_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants"
+import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, FILTER_BREAKFAST, FILTER_BY_DATE, FILTER_DINNER, FILTER_LUNCH, FILTER_SNACK, GET_FOOD_DATA_FAIL, GET_FOOD_DATA_REQUEST, GET_FOOD_DATA_SUCCESS, GET_TODAY_DATA_FAIL, GET_TODAY_DATA_REQUEST, GET_TODAY_DATA_SUCCESS, GROUP_BY_DATE_FAIL, GROUP_BY_DATE_REQUEST, GROUP_BY_DATE_SUCCESS, LOG_FOOD_FAIL, LOG_FOOD_REQUEST, LOG_FOOD_RESET, LOG_FOOD_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants"
 
 export const fetchFoodData = (input) => async (dispatch) => {
     dispatch({
@@ -210,4 +210,34 @@ export const filterSnack = (data) => async (dispatch) => {
         type: FILTER_SNACK,
         payload: data.filter((ele) => ele.mealType === "snack")
     });
+}
+
+//grouping meals by dates
+export const groupByDate = () => async (dispatch, getState) => {
+
+    const moment = require("moment");
+    // const today = moment().format("dddd MMMM Do YYYY");
+
+    dispatch({ type: GROUP_BY_DATE_REQUEST });
+    const { userLogin: { userInfo } } = getState();
+    try {
+        const { data } = await axios.get('/log/list', {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        });
+        dispatch({
+            type: GROUP_BY_DATE_SUCCESS,
+            payload: Array.from(data.reduce(
+                (entryMap, e) => entryMap.set(moment(e.date).format("dddd MMMM Do YYYY"), [...entryMap.get(moment(e.date).format("dddd MMMM Do YYYY"))||[], e]),
+            new Map()
+            ).values())
+        });
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message;
+        dispatch({ type: GROUP_BY_DATE_FAIL, payload: message });
+    }
 }

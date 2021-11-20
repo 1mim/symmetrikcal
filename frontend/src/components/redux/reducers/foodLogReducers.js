@@ -1,4 +1,4 @@
-import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, FILTER_BREAKFAST, FILTER_DINNER, FILTER_LUNCH, FILTER_SNACK, GET_FOOD_DATA_FAIL, GET_FOOD_DATA_REQUEST, GET_FOOD_DATA_SUCCESS, GET_TODAY_DATA_FAIL, GET_TODAY_DATA_REQUEST, GET_TODAY_DATA_SUCCESS, LOG_FOOD_FAIL, LOG_FOOD_REQUEST, LOG_FOOD_RESET, LOG_FOOD_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants";
+import { FETCH_FOOD_EDAM_FAIL, FETCH_FOOD_EDAM_REQUEST, FETCH_FOOD_EDAM_SUCCESS, FILTER_BREAKFAST, FILTER_BY_DATE, FILTER_DINNER, FILTER_LUNCH, FILTER_SNACK, GET_FOOD_DATA_FAIL, GET_FOOD_DATA_REQUEST, GET_FOOD_DATA_SUCCESS, GET_TODAY_DATA_FAIL, GET_TODAY_DATA_REQUEST, GET_TODAY_DATA_SUCCESS, GROUP_BY_DATE_FAIL, GROUP_BY_DATE_REQUEST, GROUP_BY_DATE_SUCCESS, LOG_FOOD_FAIL, LOG_FOOD_REQUEST, LOG_FOOD_RESET, LOG_FOOD_SUCCESS, SELECT_FOOD_DATE, SELECT_FOOD_ITEM, SET_FOOD_MEALTYPE, UPDATE_FOOD_ITEM_VALUES } from "../constants/foodLogConstants";
 
 export const fetchFoodDataReducer = (state = { loading: true, results: [] }, action) => {
     switch (action.type) {
@@ -94,3 +94,25 @@ export const filterByMealTypesReducer = (state = { breakfast: [], lunch: [], din
     }
 }
 
+// export const filterByDateReducer = (state = { mealLogs: [] }, action) => {
+//     switch (action.type) {
+//         case FILTER_BY_DATE:
+//             return { ...state, mealLogs: action.payload };
+//         default:
+//             return state;
+//     }
+// }
+
+
+export const filterByDateReducer = (state = { mealLogs: [] }, action) => {
+    switch (action.type) {
+        case GROUP_BY_DATE_REQUEST:
+            return { loading: true };
+        case GROUP_BY_DATE_SUCCESS:
+            return { loading: false, mealLogs: action.payload };
+        case GROUP_BY_DATE_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+}

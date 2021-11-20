@@ -5,6 +5,7 @@ const connectDB = require('./config/mongoDB');
 // routers
 const userRouter = require('./router/userRouter');
 const foodLogRouter = require('./router/foodLogRouter');
+const weightRouter = require('./router/weightRouter');
 
 connectDB();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 //api endpoints
 app.use('/user', userRouter);
 app.use('/log', foodLogRouter);
+app.use('/weight', weightRouter);
 
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });

@@ -10,16 +10,6 @@ export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 
-//setting/saving the account macros
-// export const SAVE_USER_MACROS_REQUEST = 'SAVE_USER_MACROS_REQUEST';
-// export const SAVE_USER_MACROS_SUCCESS = 'SAVE_USER_MACROS_SUCCESS';
-// export const SAVE_USER_MACROS_FAIL = 'SAVE_USER_MACROS_FAIL';
-
-//setting/saving the account weight
-// export const SAVE_USER_WEIGHT_REQUEST = 'SAVE_USER_WEIGHT_REQUEST';
-// export const SAVE_USER_WEIGHT_SUCCESS = 'SAVE_USER_WEIGHT_SUCCESS';
-// export const SAVE_USER_WEIGHT_FAIL = 'SAVE_USER_WEIGHT_FAIL';
-
 //update user detail in general
 export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTodayMealLogs } from '../redux/actions/foodLogActions';
+import { filterBreakfast, filterDinner, filterLunch, filterSnack, getTodayMealLogs } from '../redux/actions/foodLogActions';
 import SideNavbar from '../SideNavbar';
 import DashboardMealLogSection from './DashboardMealLogSection';
 import './dashboardstyle.css'
@@ -24,6 +24,15 @@ const DashboardScreen = () => {
         dispatch(getTodayMealLogs())
     }, [dispatch])
 
+    useEffect(() => {
+        if(todayLogs){
+        dispatch(filterBreakfast(todayLogs));
+        dispatch(filterLunch(todayLogs));
+        dispatch(filterDinner(todayLogs));
+        dispatch(filterSnack(todayLogs));
+        }
+    }, [dispatch, todayLogs])
+
     const capitalize = (s) => {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)
@@ -33,11 +42,27 @@ const DashboardScreen = () => {
     const today = moment().format("dddd, MMMM Do YYYY");
     
     const greeting = (name) => {
-        if (moment().hours(4, 5, 6, 7, 8, 9, 10, 11)) {
+        if (moment().hour() === 1 ||
+            moment().hour() === 2 ||
+            moment().hour() === 3 ||
+            moment().hour() === 4 ||
+            moment().hour() === 5 ||
+            moment().hour() === 6 ||
+            moment().hour() === 7 ||
+            moment().hour() === 8 ||
+            moment().hour() === 9 ||
+            moment().hour() === 10 ||
+            moment().hour() === 11) {
             return `Good morning, ${capitalize(name)}`
-        } else if (moment().hours(12, 13, 14, 15, 16, 17, 18)) {
+        } else if (moment().hour() === 12 ||
+                    moment().hour() === 13 ||
+                    moment().hour() === 14 ||
+                    moment().hour() === 15 ||
+                    moment().hour() === 16 ||
+                    moment().hour() === 17 ||
+                    moment().hour() === 18 ) {
             return `Good afternoon, ${capitalize(name)}`
-        } else if (moment().hours(19, 20, 21, 22, 23)){
+        } else {
             return `Good evening, ${capitalize(name)}`
         }
     }
@@ -64,7 +89,7 @@ const DashboardScreen = () => {
                     
                     <div>
                                     
-                                    <DashboardMealLogSection todayLogs={todayLogs} round2Digits={round2Digits}/>
+                                    <DashboardMealLogSection todayLogs={todayLogs} round2Digits={round2Digits} breakfast={breakfast} lunch={lunch} dinner={dinner} snack={snack}/>
                     </div>
 
                     <div>

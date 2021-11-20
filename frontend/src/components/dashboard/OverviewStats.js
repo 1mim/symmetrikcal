@@ -16,7 +16,7 @@ const OverviewStats = ({todayLogs, targetKcal, userInfo, round2Digits}) => {
             setTotalProtein(round2Digits(todayLogs.map((log) => log.protein).reduce((prev, curr) => prev + curr, 0)))
             setTotalFats(round2Digits(todayLogs.map((log) => log.fats).reduce((prev, curr) => prev + curr, 0)))
         }
-    }, [todayLogs])
+    }, [todayLogs, round2Digits])
     
     let kcalLeft = targetKcal - totalKcal
 
@@ -120,7 +120,7 @@ const OverviewStats = ({todayLogs, targetKcal, userInfo, round2Digits}) => {
                 display: false,
           },
           title: {
-            display: true,
+            display: false,
             text: 'Macronutrients',
           },
         },
@@ -136,8 +136,8 @@ const OverviewStats = ({todayLogs, targetKcal, userInfo, round2Digits}) => {
                 <div>Total Calories:</div>
                 <h2>{totalKcal}kcal</h2>
                 <div className="outof">/ {targetKcal}kcal</div>
-            </div>
-
+            </div><br/>
+            <div className="weightname">Macronutrients</div>
             <Bar data={dataMacros} options={optionsMacros} height={300} width={500}/>
         </div>
     )

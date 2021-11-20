@@ -36,7 +36,7 @@
   border-radius: 0.7rem;
   /* max-width: 100%;
     min-height: 100%; */
-  padding: 2rem 1rem 3rem 1rem;
+  padding: 2rem 1rem 2rem 1rem;
   /* margin: 0rem 2rem 0rem 0rem; */
   height: 85%;
 
@@ -169,7 +169,7 @@ h2 {
   background: -webkit-linear-gradient(
     45deg,
     rgba(251, 209, 233, 1) 9%,
-    rgb(67, 79, 102) 51%,
+    rgba(186, 206, 243, 1) 51%,
     rgba(255, 223, 183, 1) 94%
   );
   -webkit-background-clip: text;
@@ -191,4 +191,20 @@ h2 {
   font-size: 0.55rem;
   text-transform: uppercase;
   /* font-weight: lighter; */
+}
+
+.weightsectiontitle {
+  /* color: rgba(251, 209, 233, 1); */
+  color: rgba(186, 206, 243, 1);
+  letter-spacing: 0.05rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: lighter;
+  position: absolute;
+  margin-top: 0rem;
+}
+
+.weightchartcontain {
+  height: max-content;
+  margin-top: 1.3rem;
 }

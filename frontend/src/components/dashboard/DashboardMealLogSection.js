@@ -1,22 +1,7 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { filterBreakfast, filterDinner, filterLunch, filterSnack } from '../redux/actions/foodLogActions';
+import React from 'react'
 
-const DashboardMealLogSection = ({todayLogs, round2Digits}) => {
+const DashboardMealLogSection = ({round2Digits, breakfast, lunch, dinner, snack}) => {
 
-    const dispatch = useDispatch()
-
-    // const { todayLogs, loading, error } = useSelector(state => state.getTodayMeals);
-    const { breakfast, lunch, dinner, snack } = useSelector(state => state.filterByMealTypes);
-
-    useEffect(() => {
-        if(todayLogs){
-        dispatch(filterBreakfast(todayLogs));
-        dispatch(filterLunch(todayLogs));
-        dispatch(filterDinner(todayLogs));
-        dispatch(filterSnack(todayLogs));
-        }
-    }, [dispatch, todayLogs])
 
     return (
         <div className="dashboard-meallog-overview">

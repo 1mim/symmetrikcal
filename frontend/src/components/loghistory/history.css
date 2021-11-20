@@ -1,0 +1,19 @@
+.history-left-container {
+  /* display: flex; */
+  position: relative;
+  width: 70%;
+  margin: 0rem 2rem 0rem 3rem;
+  background-color: #0a1016;
+  border-radius: 0.7rem;
+  padding: 2rem 1rem 2rem 1rem;
+  align-items: center;
+}
+
+.history-right-container {
+  /* display: flex; */
+  position: relative;
+  width: 30%;
+  margin: 0rem 3rem 0rem 0rem;
+  /* margin-left: -3%; */
+  /* margin: 1rem 3rem; */
+}

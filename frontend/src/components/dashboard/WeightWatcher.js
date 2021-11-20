@@ -29,14 +29,19 @@ const WeightWatcher = ({ userInfo }) => {
               },
             },
           ],
-        },
+          },
+          plugins: {
+              legend: {
+                  display: false,
+              }
+          },
       };
     
     return (
         <div className="dashboard-weight">
             <div>
-                {/* <div className="mealname">Weight Watcher</div> */}
-                <Line data={data} options={options} height={95}/>
+                <div className="weightsectiontitle">Weight Watcher</div>
+                <div className="weightchartcontain"><Line data={data} options={options} height={95}/></div>
             </div>
             <div>
                 <div className="weight-card">

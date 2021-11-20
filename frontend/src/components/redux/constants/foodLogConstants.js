@@ -36,3 +36,11 @@ export const FILTER_BREAKFAST = 'FILTER_BREAKFAST';
 export const FILTER_LUNCH = 'FILTER_LUNCH';
 export const FILTER_DINNER = 'FILTER_DINNER';
 export const FILTER_SNACK = 'FILTER_SNACK';
+
+//get meals grouped by dates
+export const GROUP_BY_DATE_REQUEST = 'GROUP_BY_DATE_REQUEST';
+export const GROUP_BY_DATE_SUCCESS = 'GROUP_BY_DATE_SUCCESS';
+export const GROUP_BY_DATE_FAIL = 'GROUP_BY_DATE_FAIL';
+
+//filter all logs by date
+// export const FILTER_BY_DATE = 'FILTER_BY_DATE';

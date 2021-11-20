@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { fetchFoodDataReducer, filterByMealTypesReducer, getMealLogsFromDbReducer, getTodayMealsReducer, logFoodToDbReducer, setFoodDataToLogReducer } from "./reducers/foodLogReducers";
+import { fetchFoodDataReducer, filterByDateReducer, filterByMealTypesReducer, getMealLogsFromDbReducer, getTodayMealsReducer, logFoodToDbReducer, setFoodDataToLogReducer } from "./reducers/foodLogReducers";
 import { userLoginReducer, userRegisterReducer, updateUserAccountReducer, userAccountDetailsReducer } from "./reducers/userReducers";
 
 const initialState = {
@@ -26,6 +26,7 @@ const reducer = combineReducers({
     getMealLogsFromDb: getMealLogsFromDbReducer,
     getTodayMeals: getTodayMealsReducer,
     filterByMealTypes: filterByMealTypesReducer,
+    filterByDate: filterByDateReducer
 });
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
