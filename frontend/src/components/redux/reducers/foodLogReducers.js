@@ -109,7 +109,7 @@ export const filterByDateReducer = (state = { mealLogs: [] }, action) => {
         case GROUP_BY_DATE_REQUEST:
             return { loading: true };
         case GROUP_BY_DATE_SUCCESS:
-            return { loading: false, mealLogs: action.payload };
+            return { loading: false, mealLogs: action.payload, success: true};
         case GROUP_BY_DATE_FAIL:
             return { loading: false, error: action.payload };
         default:
