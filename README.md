@@ -53,13 +53,15 @@ storing user's data in MongoDB Atlas database as well as manages state using Red
   <img src="https://i.ibb.co/f9vMY8P/Log-History-ss.png" alt="log history page" border="0">
   The Log History Page has two main features. A daily total calories tracker and user's log history. Graph/chart is upated once there's a new log for that day.
   
+  <h4>SETTINGS PAGE (#wip)</h4>
+  The Settings page allows users to edit/update their account details such as username or password, macros and calories as weill as their weight. 
   
-# Issues to be tackled/finetuned
-<em>Section to be updated.<em>
+# Issues to be tackled/finetuned*
+
 1. refreshing the input fields after logging food to database. especially the mealtype.<br/>
 2. Upon creating a new account the next page requires to be refreshed before it can load the name of the user.<br/>
 3. Log History page won't load unless there's 6days of data to plot for the chart.</br>
-
+<em>*Section to be updated.<em>
 # Dependencies Used
 
 <table>
