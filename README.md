@@ -94,7 +94,7 @@ storing user's data in MongoDB Atlas database as well as manages state using Red
     </tr>
     <tr>
       <td>jsonwebtoken</td>
-      <td>moment/td>
+      <td>moment</td>
     </tr>
     <tr>
       <td>concurrently</td>
