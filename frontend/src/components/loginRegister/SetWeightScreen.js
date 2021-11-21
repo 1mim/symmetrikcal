@@ -24,7 +24,7 @@ const SetWeightScreen = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(updateUserInfo(userInfo.name, userInfo.email, userInfo.password, userInfo.targetKcal, userInfo.targetCarbs, userInfo.targetProtein, userInfo.targetFats, currentWeight, targetWeight))
-        navigate('/newlog', {replace: true})
+        navigate('/main', {replace: true})
     };
 
 

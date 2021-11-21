@@ -18,7 +18,7 @@ const LoginScreen = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(login(email, password))
-        navigate('/newlog', {replace: true})
+        navigate('/main', {replace: true})
         // navigate(-1)
     }
     

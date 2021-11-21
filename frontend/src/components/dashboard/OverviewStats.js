@@ -36,9 +36,9 @@ const OverviewStats = ({todayLogs, targetKcal, userInfo, round2Digits}) => {
                 'rgba(251, 209, 233, 1)',
                 'rgba(186, 206, 243, 1)',
             ],
-            borderWidth: 1,
+            borderWidth: 2,
                 radius: '95%',
-                cutout: '65%',
+                cutout: '70%',
           },
         ],
     };
@@ -68,7 +68,7 @@ const OverviewStats = ({todayLogs, targetKcal, userInfo, round2Digits}) => {
 
     // data for barcharts
     const dataMacros = {
-        labels: ['Carbs', '', 'Protein', '', 'Fats', ''],
+        labels: ['Total Carbs', 'Target Carbs', 'Total Protein', 'Target Protein', 'Total Fats', 'Target Fats'],
         datasets: [{
           labels: ['Total Carbs(g)', 'Target Carbs(g)', '', '', '', ''],
             data: [

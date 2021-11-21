@@ -53,12 +53,14 @@ const LogHistoryChart = ({ a, b, c, d, e, f, dayA, dayB, dayC, dayD, dayE, dayF,
       };
     
     return (
-        <div>
+        <div className="stay">
            
-            <div>
+            
             <div className="loghistory-title">Progress Tracker</div>
-                <div className="weightchartcontain"><Line data={data} options={options} height={120}/></div>
-                    </div>
+            
+            <div className="weightchartcontain"><Line data={data} options={options} height={130} /></div><br/>
+            <div className="weightname">Last 7 Days</div>
+                   
         </div>
     )
 }
